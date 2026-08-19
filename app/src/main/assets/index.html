@@ -44,7 +44,6 @@ button{cursor:pointer}
   box-shadow:0 0 60px rgba(0,0,0,.06);
 }
 
-/* top app nav — inner product look, not Wadiz chrome */
 .appbar{
   position:sticky;top:0;z-index:100;
   background:rgba(255,253,249,.97);
@@ -72,10 +71,12 @@ button{cursor:pointer}
 }
 .tabbar button.active{color:var(--orange);border-color:var(--orange)}
 
-/* pages */
 .page{display:none;animation:fade .18s ease}
 .page.active{display:block}
-@keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes fade{
+  from{opacity:.3;transform:translateY(4px)}
+  to{opacity:1;transform:none}
+}
 
 .story-head{
   text-align:center;
@@ -93,7 +94,10 @@ button{cursor:pointer}
 }
 .story-num:after{
   content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
-  width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:8px solid #181818;
+  width:0;height:0;
+  border-left:7px solid transparent;
+  border-right:7px solid transparent;
+  border-top:8px solid #181818;
 }
 .story-head h1{
   margin:0;
@@ -113,9 +117,7 @@ button{cursor:pointer}
   display:inline;
   background:linear-gradient(transparent 72%,rgba(237,97,56,.22) 0);
 }
-.stage-shell{
-  padding:0 22px 38px;
-}
+.stage-shell{padding:0 22px 38px}
 .block{
   background:#fff;
   border:1px solid var(--line);
@@ -132,11 +134,11 @@ button{cursor:pointer}
 }
 .section-label .dot{
   width:22px;height:22px;border-radius:8px;
-  display:grid;place-items:center;background:var(--orange-soft);color:var(--orange);
+  display:grid;place-items:center;
+  background:var(--orange-soft);color:var(--orange);
 }
 .subtext{font-size:11px;color:#999;line-height:1.5}
 
-/* start page */
 .start-hero{
   padding:48px 24px 34px;
   background:
@@ -148,10 +150,14 @@ button{cursor:pointer}
   color:var(--orange);font-size:13px;font-weight:900;margin-bottom:10px
 }
 .start-hero h1{
-  font-size:34px;line-height:1.22;margin:0;font-weight:950;letter-spacing:-1.8px
+  font-size:34px;line-height:1.22;margin:0;
+  font-weight:950;letter-spacing:-1.8px
 }
 .start-hero h1 b{color:var(--orange)}
-.start-hero p{color:#686868;line-height:1.65;font-size:14px;margin:16px auto 0;max-width:430px}
+.start-hero p{
+  color:#686868;line-height:1.65;font-size:14px;
+  margin:16px auto 0;max-width:430px
+}
 .quick-summary{
   margin:0 22px 20px;
   background:#202020;color:#fff;border-radius:17px;padding:16px;
@@ -165,19 +171,20 @@ button{cursor:pointer}
 .summary-row:last-child{border:0}
 .summary-row span{color:#aaa}
 .summary-row b{font-size:14px}
-.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 22px 24px}
+.action-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin:0 22px 24px
+}
 .action-tile{
-  border:1px solid #eadfce;background:#fff;border-radius:17px;padding:15px;text-align:left;
+  border:1px solid #eadfce;background:#fff;border-radius:17px;
+  padding:15px;text-align:left;
   box-shadow:0 7px 20px rgba(0,0,0,.035)
 }
 .action-tile strong{display:block;font-size:14px;margin:7px 0 4px}
 .action-tile small{font-size:11px;color:#888;line-height:1.45}
 .action-tile .ico{font-size:24px}
 
-/* input panels */
-.form-section{
-  padding:0 22px 22px;
-}
+.form-section{padding:0 22px 22px}
 .paper{
   background:#f7f5ef;
   border:1px solid #e8e3da;
@@ -199,16 +206,21 @@ button{cursor:pointer}
 .field label small{color:#aaa}
 .inputbox{
   display:flex;align-items:center;gap:7px;
-  border:1px solid #dedede;border-radius:9px;background:#fff;padding:0 10px;
+  border:1px solid #dedede;border-radius:9px;
+  background:#fff;padding:0 10px;
 }
 .inputbox input,.inputbox select{
   min-width:0;width:100%;border:0;outline:0;background:transparent;
   padding:11px 0;font-size:13px;color:#222;
 }
-.inputbox .unit{font-size:10px;color:#999;white-space:nowrap}
+.inputbox .unit{
+  font-size:10px;color:#999;white-space:nowrap
+}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
 .result{
-  margin-top:10px;background:#1f1f1f;color:#fff;border-radius:13px;padding:13px;
+  margin-top:10px;background:#1f1f1f;color:#fff;
+  border-radius:13px;padding:13px;
 }
 .result-title{font-size:11px;color:#999;margin-bottom:5px}
 .result-row{
@@ -216,11 +228,14 @@ button{cursor:pointer}
   padding:9px 0;border-bottom:1px solid #363636;font-size:12px
 }
 .result-row:last-child{border:0}
-.result-row span{color:#aaa}.result-row b{font-size:13px}
+.result-row span{color:#aaa}
+.result-row b{font-size:13px}
+
 .c-orange{color:#ff9172!important}
 .c-yellow{color:#ffd36d!important}
 .c-blue{color:#7fc2ed!important}
 .c-green{color:#83d7ad!important}
+
 .callout{
   border-radius:11px;padding:11px 12px;margin-top:10px;
   font-size:11px;line-height:1.55
@@ -228,6 +243,7 @@ button{cursor:pointer}
 .callout.yellow{background:#fff8e6;border:1px solid #efd188}
 .callout.blue{background:#eff8ff;border:1px solid #b9daef}
 .callout.green{background:#eff9f4;border:1px solid #b4ddca}
+
 .primary{
   width:100%;border:0;border-radius:10px;
   background:linear-gradient(90deg,#ff753b,#ff8a3d);
@@ -239,776 +255,2737 @@ button{cursor:pointer}
   padding:11px;border-radius:10px;font-weight:800;margin-top:8px
 }
 
-/* comparison */
 .compare-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:8px
 }
 .compare-card{
   padding:13px;border-radius:12px;background:#f2f2f2;min-width:0
 }
-.compare-card.accent{background:#fff0e8;border:1px solid #ffd2c0}
+.compare-card.accent{
+  background:#fff0e8;border:1px solid #ffd2c0
+}
 .compare-card small{font-size:10px;color:#888}
 .compare-card .metric{
   font-weight:950;font-size:18px;margin-top:5px;word-break:break-all
 }
 
-/* ratio stages */
-.ratio-stage-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ratio-stage{
-  border:1px solid #e2e2e2;background:#fff;border-radius:10px;padding:11px;text-align:left
+.ratio-stage-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px
 }
-.ratio-stage.active{border:2px solid var(--orange);background:#fff6f1}
-.ratio-stage strong{display:block;font-size:11px;margin-bottom:4px}
-.ratio-stage small{font-size:9px;color:#777;line-height:1.4}
+.ratio-stage{
+  border:1px solid #e2e2e2;background:#fff;
+  border-radius:10px;padding:11px;text-align:left
+}
+.ratio-stage.active{
+  border:2px solid var(--orange);background:#fff6f1
+}
+.ratio-stage strong{
+  display:block;font-size:11px;margin-bottom:4px
+}
+.ratio-stage small{
+  font-size:9px;color:#777;line-height:1.4
+}
 .ratio-bars{padding-top:4px}
 .bar{margin:10px 0}
-.bar-head{display:flex;justify-content:space-between;font-size:10px}
-.bar-track{height:6px;background:#ededeb;border-radius:999px;overflow:hidden;margin-top:4px}
+.bar-head{
+  display:flex;justify-content:space-between;font-size:10px
+}
+.bar-track{
+  height:6px;background:#ededeb;border-radius:999px;
+  overflow:hidden;margin-top:4px
+}
 .bar-fill{height:100%;border-radius:999px}
 .bar-fill.life{background:#8d8d8d}
 .bar-fill.save{background:#ed673a}
 .bar-fill.invest{background:#4e9fd2}
 .bar-fill.extra{background:#4fb686}
 .money-split{
-  margin-top:10px;border:1px solid #f0b59b;border-radius:10px;padding:11px;background:#fff
+  margin-top:10px;border:1px solid #f0b59b;
+  border-radius:10px;padding:11px;background:#fff
 }
 .money-split .split-row{
-  display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f1ece8;font-size:10.5px
+  display:flex;justify-content:space-between;
+  padding:7px 0;border-bottom:1px solid #f1ece8;
+  font-size:10.5px
 }
 .money-split .split-row:last-child{border:0}
 
-/* account accordion */
 .account{
-  background:#fff;border:1px solid #ddd;border-radius:10px;margin:7px 0;overflow:hidden
+  background:#fff;border:1px solid #ddd;
+  border-radius:10px;margin:7px 0;overflow:hidden
 }
 .account.open{border:1.5px solid #6aa9d3}
 .account-head{
-  display:flex;align-items:center;justify-content:space-between;gap:8px;
-  padding:11px;cursor:pointer
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:11px;cursor:pointer
 }
-.account-title{display:flex;align-items:center;gap:9px;min-width:0}
+.account-title{
+  display:flex;align-items:center;gap:9px;min-width:0
+}
 .account-title strong{font-size:11px;display:block}
-.account-title small{display:block;font-size:9px;color:#aaa;margin-top:2px}
+.account-title small{
+  display:block;font-size:9px;color:#aaa;margin-top:2px
+}
 .chev{color:#777}
-.account-body{display:none;padding:0 11px 11px;font-size:10px;line-height:1.55;color:#666}
+.account-body{
+  display:none;padding:0 11px 11px;
+  font-size:10px;line-height:1.55;color:#666
+}
 .account.open .account-body{display:block}
 .rec-card{
   background:#f1f1ef;border-radius:8px;padding:9px;margin-top:7px
 }
-.rec-card strong{display:flex;justify-content:space-between;color:#333;font-size:10px}
+.rec-card strong{
+  display:flex;justify-content:space-between;
+  color:#333;font-size:10px
+}
 .rec-card .rank{color:#52b38b}
-.rec-card p{margin:5px 0 0;font-size:9px;color:#777}
-.rec-card .why{color:#2d9868;font-weight:800;margin-top:5px}
+.rec-card p{
+  margin:5px 0 0;font-size:9px;color:#777
+}
+.rec-card .why{
+  color:#2d9868;font-weight:800;margin-top:5px
+}
 
-/* timeline */
 .timeline{position:relative;padding-left:20px}
 .timeline:before{
-  content:"";position:absolute;left:6px;top:8px;bottom:9px;width:2px;background:#f4b092
+  content:"";position:absolute;left:6px;top:8px;bottom:9px;
+  width:2px;background:#f4b092
 }
-.timeline-row{position:relative;padding:8px 0 10px;border-bottom:1px solid #eee}
+.timeline-row{
+  position:relative;padding:8px 0 10px;border-bottom:1px solid #eee
+}
 .timeline-row:last-child{border:0}
 .timeline-row:before{
-  content:"";position:absolute;left:-18px;top:12px;width:10px;height:10px;border-radius:50%;background:var(--orange)
+  content:"";position:absolute;left:-18px;top:12px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--orange)
 }
-.timeline-row strong{display:flex;justify-content:space-between;gap:8px;font-size:10.5px}
-.timeline-row small{display:block;color:#888;font-size:9px;margin-top:3px}
+.timeline-row strong{
+  display:flex;justify-content:space-between;gap:8px;font-size:10.5px
+}
+.timeline-row small{
+  display:block;color:#888;font-size:9px;margin-top:3px
+}
 
-/* goals */
 .goal-board{
   background:#1f1f1f;border-radius:12px;padding:13px;color:#fff
 }
 .goal-row{
-  display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #363636;font-size:10.5px
+  display:flex;justify-content:space-between;gap:10px;
+  padding:9px 0;border-bottom:1px solid #363636;font-size:10.5px
 }
 .goal-row:last-child{border:0}
-.goal-row span{color:#aaa}.goal-row b{font-size:12px}
+.goal-row span{color:#aaa}
+.goal-row b{font-size:12px}
 .progress{
-  margin-top:10px;background:#ece8df;height:8px;border-radius:999px;overflow:hidden
+  margin-top:10px;background:#ece8df;height:8px;
+  border-radius:999px;overflow:hidden
 }
 .progress>div{
-  height:100%;background:linear-gradient(90deg,var(--orange),#ffb04f);border-radius:999px
+  height:100%;
+  background:linear-gradient(90deg,var(--orange),#ffb04f);
+  border-radius:999px
 }
 .progress-text{
-  display:flex;justify-content:space-between;font-size:9px;color:#888;margin-top:5px
+  display:flex;justify-content:space-between;
+  font-size:9px;color:#888;margin-top:5px
 }
 
-/* tax and investment */
 .check-list{display:grid;gap:8px}
 .check-item{
-  border:1px solid #e6e2db;background:#fff;border-radius:11px;padding:11px;
-  display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:start
+  border:1px solid #e6e2db;background:#fff;border-radius:11px;
+  padding:11px;display:grid;
+  grid-template-columns:27px 1fr;
+  gap:9px;align-items:start
 }
 .check-num{
-  width:27px;height:27px;border-radius:9px;background:var(--orange-soft);color:var(--orange);
+  width:27px;height:27px;border-radius:9px;
+  background:var(--orange-soft);color:var(--orange);
   display:grid;place-items:center;font-size:10px;font-weight:900
 }
 .check-item strong{font-size:11px;display:block}
-.check-item small{font-size:9px;color:#777;line-height:1.5}
-.risk-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.risk-button{
-  border:1px solid #ddd;background:#fff;border-radius:9px;padding:10px 5px;font-size:10px;color:#777
+.check-item small{
+  font-size:9px;color:#777;line-height:1.5
 }
-.risk-button.active{background:var(--orange);color:#fff;border-color:var(--orange);font-weight:900}
 
-/* story style large statements inspired by user's screenshots */
+.risk-buttons{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px
+}
+.risk-button{
+  border:1px solid #ddd;background:#fff;border-radius:9px;
+  padding:10px 5px;font-size:10px;color:#777
+}
+.risk-button.active{
+  background:var(--orange);
+  color:#fff;
+  border-color:var(--orange);
+  font-weight:900
+}
+
+.invest-highlight{
+  margin-top:10px;
+  padding:14px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#fff8e8,#fff);
+  border:1px solid #ead7a9;
+}
+.invest-highlight small{
+  display:block;
+  color:#888;
+  font-size:10px;
+  margin-bottom:6px;
+}
+.invest-highlight strong{
+  display:block;
+  font-size:23px;
+  font-weight:950;
+  color:#171717;
+}
+.invest-highlight p{
+  margin:6px 0 0;
+  color:#777;
+  font-size:10px;
+  line-height:1.5;
+}
+
 .story-break{
   padding:48px 24px;background:#fff;text-align:center
 }
 .story-break .bubble{
   display:inline-flex;align-items:center;justify-content:center;
-  background:#181818;color:#fff;border-radius:18px;padding:9px 15px;
-  font-weight:900;font-size:18px;position:relative;margin-bottom:22px
+  background:#181818;color:#fff;border-radius:18px;
+  padding:9px 15px;font-weight:900;font-size:18px;
+  position:relative;margin-bottom:22px
 }
 .story-break .bubble:after{
-  content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
-  border-left:7px solid transparent;border-right:7px solid transparent;border-top:8px solid #181818
+  content:"";position:absolute;bottom:-7px;left:50%;
+  transform:translateX(-50%);
+  border-left:7px solid transparent;
+  border-right:7px solid transparent;
+  border-top:8px solid #181818
 }
-.story-break h2{font-size:30px;line-height:1.32;margin:0;font-weight:950}
+.story-break h2{
+  font-size:30px;line-height:1.32;margin:0;font-weight:950
+}
 .story-break h2 b{color:var(--orange)}
-.story-break p{margin:14px 0 0;font-size:14px;line-height:1.6;color:#666}
+.story-break p{
+  margin:14px 0 0;font-size:14px;line-height:1.6;color:#666
+}
 
 .footer-note{
-  margin:0 22px 70px;padding:17px;border-radius:14px;background:#fff8dc;border:1px solid #f1df9d;
-  font-size:11px;line-height:1.55;text-align:center;color:#665f4c
+  margin:0 22px 70px;
+  padding:17px;
+  border-radius:14px;
+  background:#fff8dc;
+  border:1px solid #f1df9d;
+  font-size:11px;
+  line-height:1.55;
+  text-align:center;
+  color:#665f4c
 }
+
 @media(max-width:380px){
   .start-hero h1,.story-head h1{font-size:28px}
   .story-break h2{font-size:26px}
-  .stage-shell,.form-section{padding-left:16px;padding-right:16px}
-  .action-grid{margin-left:16px;margin-right:16px}
+  .stage-shell,.form-section{
+    padding-left:16px;
+    padding-right:16px
+  }
+  .action-grid{
+    margin-left:16px;
+    margin-right:16px
+  }
 }
 </style>
 </head>
+
 <body>
+
 <div class="app">
 
-  <header class="appbar">
-    <div class="wordmark">
-      <strong>시호의 머니노트</strong>
-      <span class="save-state" id="saveState">자동 저장</span>
-    </div>
-    <nav class="tabbar" id="tabs">
-      <button class="active" data-page="start">시작하기</button>
-      <button data-page="salary">💰 1.월급공식</button>
-      <button data-page="design">⚡ 2.설계</button>
-      <button data-page="saving">🏦 3.저축</button>
-      <button data-page="tax">🧾 4.절세</button>
-      <button data-page="invest">📈 5.투자</button>
-      <button data-page="future">💡 6.미래</button>
-    </nav>
-  </header>
+<header class="appbar">
+  <div class="wordmark">
+    <strong>시호의 머니노트</strong>
+    <span class="save-state" id="saveState">자동 저장</span>
+  </div>
 
-  <!-- START -->
-  <main class="page active" id="page-start">
-    <section class="start-hero">
-      <div class="eyebrow">월급 숫자 한 번만 넣으면</div>
-      <h1>돈이 어디로 가야 할지<br><b>순서와 금액까지</b> 보여줘요.</h1>
-      <p>가계부처럼 매일 기록하는 방식보다, 월급과 월 지출을 기준으로 이번 달 돈의 역할을 먼저 나누는 데 집중했습니다.</p>
-    </section>
+  <nav class="tabbar" id="tabs">
+    <button class="active" data-page="start">시작하기</button>
+    <button data-page="salary">💰 1.월급공식</button>
+    <button data-page="design">⚡ 2.설계</button>
+    <button data-page="saving">🏦 3.저축</button>
+    <button data-page="tax">🧾 4.절세</button>
+    <button data-page="invest">📈 5.투자</button>
+    <button data-page="future">💡 6.미래</button>
+  </nav>
+</header>
 
-    <section class="stage-shell">
-      <div class="quick-summary">
-        <div class="summary-row"><span>월 수입</span><b id="startIncome">0원</b></div>
-        <div class="summary-row"><span>총 지출</span><b class="c-orange" id="startExpense">0원</b></div>
-        <div class="summary-row"><span>잔여 소득</span><b id="startRemain">0원</b></div>
-        <div class="summary-row"><span>현재 순자산</span><b class="c-yellow" id="startNet">0원</b></div>
-      </div>
-    </section>
+<!-- START -->
 
-    <div class="action-grid">
-      <button class="action-tile" data-jump="salary"><span class="ico">💸</span><strong>월급 분석</strong><small>수입·지출·잔여소득 자동 계산</small></button>
-      <button class="action-tile" data-jump="design"><span class="ico">🏦</span><strong>통장 설계</strong><small>5개 역할로 돈의 길 분리</small></button>
-      <button class="action-tile" data-jump="saving"><span class="ico">🎯</span><strong>저축 루틴</strong><small>단계별 비율과 이체 순서</small></button>
-      <button class="action-tile" data-jump="future"><span class="ico">📊</span><strong>미래 계산</strong><small>목표·은퇴까지 시점 계산</small></button>
-    </div>
+<main class="page active" id="page-start">
 
-    <div class="story-break">
-      <div class="bubble">01</div>
-      <h2>월급이 같아도<br><b>돈을 나누는 방식</b>은 달라야 해요.</h2>
-      <p>현재 지출과 자산 단계가 다르면 같은 월급이어도 저축·투자 여력은 달라집니다.</p>
-    </div>
-  </main>
+<section class="start-hero">
+  <div class="eyebrow">월급 숫자 한 번만 넣으면</div>
 
-  <!-- SALARY -->
-  <main class="page" id="page-salary">
-    <section class="story-head">
-      <div class="story-num">01</div>
-      <h1>매일 일일이 적지 말고<br><span class="orange-underline">월급 숫자 한 번</span>으로 시작</h1>
-      <p>월급에서 실제 지출을 빼고 남는 돈을 저축·투자·비상금으로 자동 정리합니다.</p>
-    </section>
+  <h1>
+    돈이 어디로 가야 할지<br>
+    <b>순서와 금액까지</b> 보여줘요.
+  </h1>
 
-    <section class="form-section">
-      <div class="paper">
-        <div class="section-label"><span class="dot">1</span> 기본 정보</div>
-        <div class="card">
-          <div class="field">
-            <label>월급 <small>세후 실수령</small></label>
-            <div class="inputbox"><input id="income" type="number" min="0" inputmode="numeric" value="2800000"><span class="unit">원</span></div>
-          </div>
-          <div class="two">
-            <div class="field"><label>나이</label><div class="inputbox"><input id="age" type="number" min="14" value="24"><span class="unit">세</span></div></div>
-            <div class="field"><label>월급일</label><div class="inputbox"><input id="payday" type="number" min="1" max="31" value="25"><span class="unit">일</span></div></div>
-          </div>
-          <div class="field"><label>현재 자산</label><div class="inputbox"><input id="assets" type="number" min="0" value="30000000"><span class="unit">원</span></div></div>
-          <div class="field"><label>부채</label><div class="inputbox"><input id="debt" type="number" min="0" value="5000000"><span class="unit">원</span></div></div>
-        </div>
+  <p>
+    가계부처럼 매일 기록하는 방식보다,
+    월급과 월 지출을 기준으로 이번 달 돈의 역할을
+    먼저 나누는 데 집중했습니다.
+  </p>
+</section>
 
-        <div class="section-label" style="margin-top:14px"><span class="dot">2</span> 월 지출 구조</div>
-        <div class="card">
-          <div class="two">
-            <div class="field"><label>주거비</label><div class="inputbox"><input id="housing" type="number" min="0" value="500000"><span class="unit">원</span></div></div>
-            <div class="field"><label>통신비</label><div class="inputbox"><input id="phone" type="number" min="0" value="70000"><span class="unit">원</span></div></div>
-            <div class="field"><label>교통비</label><div class="inputbox"><input id="transport" type="number" min="0" value="100000"><span class="unit">원</span></div></div>
-            <div class="field"><label>식비</label><div class="inputbox"><input id="food" type="number" min="0" value="350000"><span class="unit">원</span></div></div>
-            <div class="field"><label>차량 유지비</label><div class="inputbox"><input id="car" type="number" min="0" value="200000"><span class="unit">원</span></div></div>
-            <div class="field"><label>보험·기타</label><div class="inputbox"><input id="etc" type="number" min="0" value="400000"><span class="unit">원</span></div></div>
-          </div>
-        </div>
+<section class="stage-shell">
 
-        <div class="result">
-          <div class="result-title">◢ 자동 배분 결과</div>
-          <div class="result-row"><span>월 수입</span><b id="rIncome">0원</b></div>
-          <div class="result-row"><span>총 지출</span><b id="rExpense" class="c-orange">0원</b></div>
-          <div class="result-row"><span>잔여 소득</span><b id="rRemain">0원</b></div>
-          <div class="result-row"><span>🏦 저축 (잔여 55%)</span><b id="rSave" class="c-yellow">0원</b></div>
-          <div class="result-row"><span>📈 투자 (잔여 30%)</span><b id="rInvest" class="c-blue">0원</b></div>
-          <div class="result-row"><span>🧯 비상금 (잔여 15%)</span><b id="rEmergency" class="c-green">0원</b></div>
-        </div>
-        <div class="callout yellow"><b>이 비율로 갑니다.</b><br>월급이 적어도, 지출이 많아도 먼저 ‘실제로 남는 돈’을 기준으로 자동 계산합니다.</div>
-        <button class="primary" data-jump="design">📊 다음: 내 통장 구조 보기 →</button>
-        <button class="secondary" id="resetBtn">입력값 전부 0원으로 초기화</button>
-      </div>
-    </section>
-  </main>
+<div class="quick-summary">
+  <div class="summary-row">
+    <span>월 수입</span>
+    <b id="startIncome">0원</b>
+  </div>
 
-  <!-- DESIGN -->
-  <main class="page" id="page-design">
-    <section class="story-head">
-      <div class="story-num">02</div>
-      <h1>통장 몇 개로 나눌지<br><span class="orange-underline">막연하지 않게</span> 손에 쥐어주듯</h1>
-      <p>급여·고정비·생활비·비상금·투자 통장의 역할과 이번 달 이동 금액을 바로 보여줍니다.</p>
-    </section>
+  <div class="summary-row">
+    <span>총 지출</span>
+    <b class="c-orange" id="startExpense">0원</b>
+  </div>
 
-    <section class="form-section">
-      <div class="paper">
-        <div class="section-label"><span class="dot">🏦</span> 통장 5개 만들기</div>
-        <div class="callout blue" style="margin-top:0">💡 각 통장을 눌러보세요. 역할과 금액이 펼쳐집니다.</div>
-        <div id="accounts"></div>
-      </div>
-    </section>
+  <div class="summary-row">
+    <span>잔여 소득</span>
+    <b id="startRemain">0원</b>
+  </div>
 
-    <div class="story-break">
-      <div class="bubble">03</div>
-      <h2>은행 앱에는<br><b>이 순서대로 자동이체만</b> 걸면 끝</h2>
-      <p>실제 돈 이동은 은행 앱에서 직접 설정하고, 여기서는 날짜와 금액을 자동으로 계산합니다.</p>
-    </div>
-  </main>
-
-  <!-- SAVING -->
-  <main class="page" id="page-saving">
-    <section class="story-head">
-      <div class="story-num">03</div>
-      <h1>모두 같은 조언 X<br><span class="orange-underline">내 단계에 맞는</span> 답</h1>
-      <p>사회초년부터 자산 증식 단계까지, 월급이 같아도 기준 비율을 다르게 볼 수 있게 했습니다.</p>
-    </section>
-
-    <section class="form-section">
-      <div class="paper">
-        <div class="section-label"><span class="dot">📊</span> 내 단계 선택</div>
-        <div class="ratio-stage-grid">
-          <button class="ratio-stage active" data-stage="starter"><strong>🐣 사회초년</strong><small>생활 60% · 저축 30% · 투자 10%</small></button>
-          <button class="ratio-stage" data-stage="under1"><strong>🌱 1억 미만</strong><small>생활 50% · 저축 30% · 투자 20%</small></button>
-          <button class="ratio-stage" data-stage="over1"><strong>🚀 1억 이상</strong><small>생활 35% · 저축 10% · 투자 55%</small></button>
-          <button class="ratio-stage" data-stage="over3"><strong>🔥 3억 이상</strong><small>생활 30% · 투자 65% · 여유 5%</small></button>
-        </div>
-        <div class="card" id="stageResult"></div>
-
-        <div class="section-label" style="margin-top:14px"><span class="dot">⚡</span> 월급날 자동이체 루틴</div>
-        <div class="card">
-          <div class="timeline" id="timeline"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- TAX -->
-  <main class="page" id="page-tax">
-    <section class="story-head">
-      <div class="story-num">04</div>
-      <h1>뭐부터 할지<br><span class="orange-underline">순서대로</span> 잡아줍니다</h1>
-      <p>세제 계좌는 최신 제도 확인이 필요한 영역이라, 가입을 대신 결정하지 않고 확인 순서를 정리합니다.</p>
-    </section>
-
-    <section class="form-section">
-      <div class="paper">
-        <div class="result" style="background:linear-gradient(135deg,#252525,#171717)">
-          <div class="result-title">🧾 절세 계좌 활용</div>
-          <div style="font-size:22px;font-weight:950;line-height:1.35;margin:8px 0 4px">세금을 줄이면<br><span class="c-orange">더 빨리 모여요.</span></div>
-          <div class="subtext" style="color:#aaa">단, 실제 가입 조건과 세제 혜택은 최신 공식 안내를 확인하세요.</div>
-        </div>
-
-        <div class="callout yellow"><b>시호의 한마디</b><br>“정답은 이거야”가 아니라, 지금 단계에서 뭘 먼저 확인할지를 보여주는 용도로 만들었습니다.</div>
-
-        <div class="section-label" style="margin-top:14px"><span class="dot">✓</span> 내 단계에 맞는 절세 체크</div>
-        <div class="check-list">
-          <div class="check-item"><div class="check-num">1</div><div><strong>비상금 먼저 확보</strong><small>세제 계좌에 넣기 전에 단기 생활비 쿠션이 있는지 확인합니다.</small></div></div>
-          <div class="check-item"><div class="check-num">2</div><div><strong>ISA 필요성 확인</strong><small>투자 기간, 중도 인출 필요성, 수수료를 먼저 확인합니다.</small></div></div>
-          <div class="check-item"><div class="check-num">3</div><div><strong>연금·IRP 확인</strong><small>오래 묶이는 자금인지, 현재 소득 구조에 맞는지 따져봅니다.</small></div></div>
-          <div class="check-item"><div class="check-num">4</div><div><strong>최신 공식 정보 재확인</strong><small>한도·공제·과세 규정은 바뀔 수 있으므로 가입 직전 최신 자료를 봅니다.</small></div></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- INVEST -->
-  <main class="page" id="page-invest">
-    <section class="story-head">
-      <div class="story-num">05</div>
-      <h1>생활비를 건드리지 않고<br><span class="orange-underline">투자할 수 있는 금액</span>부터</h1>
-      <p>특정 상품을 찍어주는 대신, 이번 달 투자 여력과 가정 수익률에 따른 미래 금액을 계산합니다.</p>
-    </section>
-
-    <section class="form-section">
-      <div class="paper">
-        <div class="result">
-          <div class="result-row"><span>이번 달 투자 가능액</span><b id="investBudget" class="c-blue">0원</b></div>
-          <div class="result-row"><span>월급 대비 비중</span><b id="investIncomeRate">0%</b></div>
-          <div class="result-row"><span>잔여소득 대비 비중</span><b id="investRemainRate">0%</b></div>
-        </div>
-
-        <div class="section-label" style="margin-top:14px"><span class="dot">%</span> 예상 연 수익률 가정</div>
-        <div class="risk-buttons">
-          <button class="risk-button" data-return="2">안전 2%</button>
-          <button class="risk-button active" data-return="4">보통 4%</button>
-          <button class="risk-button" data-return="6">적극 6%</button>
-        </div>
-        <div class="callout blue">💡 이 수익률은 예측값이 아니라 단순 계산용 가정입니다. 실제 수익률은 달라질 수 있습니다.</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FUTURE -->
-  <main class="page" id="page-future">
-    <section class="story-head">
-      <div class="story-num">06</div>
-      <h1>또래와 비교해<br><span class="orange-underline">지금 내 위치와 다음 목표</span>를 표시</h1>
-      <p>출처가 불분명한 평균을 자동으로 넣지 않고, 비교하고 싶은 기준을 직접 입력하도록 했습니다.</p>
-    </section>
-
-    <section class="form-section">
-      <div class="paper">
-        <div class="section-label"><span class="dot">1</span> 내 위치</div>
-        <div class="card">
-          <div class="field"><label>비교 기준 순자산 <small>원하는 기준 직접 입력</small></label><div class="inputbox"><input id="peerNet" type="number" min="0" value="65000000"><span class="unit">원</span></div></div>
-          <div class="compare-grid">
-            <div class="compare-card"><small>내 순자산</small><div class="metric" id="myNet">0원</div></div>
-            <div class="compare-card accent"><small>기준과 차이</small><div class="metric" id="peerGap">0원</div></div>
-          </div>
-          <div class="callout yellow" id="peerMessage">비교 결과를 계산하는 중입니다.</div>
-        </div>
-
-        <div class="section-label" style="margin-top:14px"><span class="dot">2</span> 목표 자산</div>
-        <div class="card">
-          <div class="field"><label>목표 자산</label><div class="inputbox"><input id="goalAsset" type="number" min="0" value="100000000"><span class="unit">원</span></div></div>
-          <div class="goal-board">
-            <div class="goal-row"><span>현재 순자산</span><b id="goalCurrent">0원</b></div>
-            <div class="goal-row"><span>월 저축+투자</span><b class="c-yellow" id="goalMonthly">0원</b></div>
-            <div class="goal-row"><span>예상 달성 시점</span><b id="goalDate">-</b></div>
-            <div class="goal-row"><span>D-DAY</span><b class="c-blue" id="goalDday">-</b></div>
-          </div>
-          <div class="progress"><div id="goalProgress"></div></div>
-          <div class="progress-text"><span>현재</span><span id="goalPercent">0%</span><span>목표</span></div>
-        </div>
-
-        <div class="section-label" style="margin-top:14px"><span class="dot">3</span> 이대로 가면, 은퇴할 때</div>
-        <div class="card">
-          <div class="field"><label>은퇴 목표 나이</label><div class="inputbox"><input id="retireAge" type="range" min="45" max="75" value="60"><span class="unit" id="retireAgeText">60세</span></div></div>
-
-          <div class="result">
-            <div class="result-row"><span>은퇴까지</span><b id="yearsLeft">0년</b></div>
-            <div class="result-row"><span>은퇴 시점 예상 순자산</span><b class="c-yellow" id="retireAsset">0원</b></div>
-            <div class="result-row"><span>그중 내가 넣은 원금</span><b id="retirePrincipal">0원</b></div>
-            <div class="result-row"><span>가정 수익</span><b class="c-green" id="retireGain">0원</b></div>
-            <div class="result-row"><span>은퇴 후 월 사용 가능액 <small style="font-size:8px">(30년 단순분할)</small></span><b class="c-blue" id="retireMonthly">0원</b></div>
-          </div>
-          <div class="callout blue" id="retireMessage">은퇴 진단을 계산하는 중입니다.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="story-break">
-      <div class="bubble">END</div>
-      <h2>월급 → 통장 → 저축 → 절세 → 투자 → 미래<br><b>다음 행동이 끊기지 않게</b></h2>
-      <p>한 번 입력한 숫자가 모든 단계에 연결되도록 구성했습니다.</p>
-    </div>
-  </main>
-
-  <div class="footer-note">
-    이 웹앱은 개인 돈관리 시뮬레이션용입니다. 실제 금융상품 가입·세금·연금 판단 전에는 최신 공식 정보를 확인하세요.
+  <div class="summary-row">
+    <span>현재 순자산</span>
+    <b class="c-yellow" id="startNet">0원</b>
   </div>
 </div>
 
+</section>
+
+<div class="action-grid">
+
+<button class="action-tile" data-jump="salary">
+  <span class="ico">💸</span>
+  <strong>월급 분석</strong>
+  <small>수입·지출·잔여소득 자동 계산</small>
+</button>
+
+<button class="action-tile" data-jump="design">
+  <span class="ico">🏦</span>
+  <strong>통장 설계</strong>
+  <small>5개 역할로 돈의 길 분리</small>
+</button>
+
+<button class="action-tile" data-jump="saving">
+  <span class="ico">🎯</span>
+  <strong>저축 루틴</strong>
+  <small>단계별 비율과 이체 순서</small>
+</button>
+
+<button class="action-tile" data-jump="future">
+  <span class="ico">📊</span>
+  <strong>미래 계산</strong>
+  <small>목표·은퇴까지 시점 계산</small>
+</button>
+
+</div>
+
+<div class="story-break">
+  <div class="bubble">01</div>
+
+  <h2>
+    월급이 같아도<br>
+    <b>돈을 나누는 방식</b>은 달라야 해요.
+  </h2>
+
+  <p>
+    현재 지출과 자산 단계가 다르면 같은 월급이어도
+    저축·투자 여력은 달라집니다.
+  </p>
+</div>
+
+</main>
+
+<!-- SALARY -->
+
+<main class="page" id="page-salary">
+
+<section class="story-head">
+  <div class="story-num">01</div>
+
+  <h1>
+    매일 일일이 적지 말고<br>
+    <span class="orange-underline">월급 숫자 한 번</span>으로 시작
+  </h1>
+
+  <p>
+    월급에서 실제 지출을 빼고 남는 돈을
+    저축·투자·비상금으로 자동 정리합니다.
+  </p>
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="section-label">
+  <span class="dot">1</span>
+  기본 정보
+</div>
+
+<div class="card">
+
+<div class="field">
+  <label>월급 <small>세후 실수령</small></label>
+
+  <div class="inputbox">
+    <input id="income" type="number" min="0" inputmode="numeric" value="2800000">
+    <span class="unit">원</span>
+  </div>
+</div>
+
+<div class="two">
+
+<div class="field">
+  <label>나이</label>
+
+  <div class="inputbox">
+    <input id="age" type="number" min="14" value="24">
+    <span class="unit">세</span>
+  </div>
+</div>
+
+<div class="field">
+  <label>월급일</label>
+
+  <div class="inputbox">
+    <input id="payday" type="number" min="1" max="31" value="25">
+    <span class="unit">일</span>
+  </div>
+</div>
+
+</div>
+
+<div class="field">
+  <label>현재 자산</label>
+
+  <div class="inputbox">
+    <input id="assets" type="number" min="0" value="30000000">
+    <span class="unit">원</span>
+  </div>
+</div>
+
+<div class="field">
+  <label>부채</label>
+
+  <div class="inputbox">
+    <input id="debt" type="number" min="0" value="5000000">
+    <span class="unit">원</span>
+  </div>
+</div>
+
+</div>
+
+
+<div class="section-label" style="margin-top:14px">
+  <span class="dot">2</span>
+  월 지출 구조
+</div>
+
+<div class="card">
+
+<div class="two">
+
+<div class="field">
+<label>주거비</label>
+<div class="inputbox">
+<input id="housing" type="number" min="0" value="500000">
+<span class="unit">원</span>
+</div>
+</div>
+
+<div class="field">
+<label>통신비</label>
+<div class="inputbox">
+<input id="phone" type="number" min="0" value="70000">
+<span class="unit">원</span>
+</div>
+</div>
+
+<div class="field">
+<label>교통비</label>
+<div class="inputbox">
+<input id="transport" type="number" min="0" value="100000">
+<span class="unit">원</span>
+</div>
+</div>
+
+<div class="field">
+<label>식비</label>
+<div class="inputbox">
+<input id="food" type="number" min="0" value="350000">
+<span class="unit">원</span>
+</div>
+</div>
+
+<div class="field">
+<label>차량 유지비</label>
+<div class="inputbox">
+<input id="car" type="number" min="0" value="200000">
+<span class="unit">원</span>
+</div>
+</div>
+
+<div class="field">
+<label>보험·기타</label>
+<div class="inputbox">
+<input id="etc" type="number" min="0" value="400000">
+<span class="unit">원</span>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="result">
+
+<div class="result-title">◢ 자동 배분 결과</div>
+
+<div class="result-row">
+<span>월 수입</span>
+<b id="rIncome">0원</b>
+</div>
+
+<div class="result-row">
+<span>총 지출</span>
+<b id="rExpense" class="c-orange">0원</b>
+</div>
+
+<div class="result-row">
+<span>잔여 소득</span>
+<b id="rRemain">0원</b>
+</div>
+
+<div class="result-row">
+<span>🏦 저축 (잔여 55%)</span>
+<b id="rSave" class="c-yellow">0원</b>
+</div>
+
+<div class="result-row">
+<span>📈 투자 (잔여 30%)</span>
+<b id="rInvest" class="c-blue">0원</b>
+</div>
+
+<div class="result-row">
+<span>🧯 비상금 (잔여 15%)</span>
+<b id="rEmergency" class="c-green">0원</b>
+</div>
+
+</div>
+
+<div class="callout yellow">
+<b>이 비율로 갑니다.</b><br>
+월급이 적어도, 지출이 많아도 먼저
+‘실제로 남는 돈’을 기준으로 자동 계산합니다.
+</div>
+
+<button class="primary" data-jump="design">
+📊 다음: 내 통장 구조 보기 →
+</button>
+
+<button class="secondary" id="resetBtn">
+입력값 전부 0원으로 초기화
+</button>
+
+</div>
+</section>
+
+</main>
+
+<!-- DESIGN -->
+
+<main class="page" id="page-design">
+
+<section class="story-head">
+
+<div class="story-num">02</div>
+
+<h1>
+통장 몇 개로 나눌지<br>
+<span class="orange-underline">막연하지 않게</span> 손에 쥐어주듯
+</h1>
+
+<p>
+급여·고정비·생활비·비상금·투자 통장의 역할과
+이번 달 이동 금액을 바로 보여줍니다.
+</p>
+
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="section-label">
+<span class="dot">🏦</span>
+통장 5개 만들기
+</div>
+
+<div class="callout blue" style="margin-top:0">
+💡 각 통장을 눌러보세요. 역할과 금액이 펼쳐집니다.
+</div>
+
+<div id="accounts"></div>
+
+</div>
+</section>
+
+<div class="story-break">
+
+<div class="bubble">03</div>
+
+<h2>
+은행 앱에는<br>
+<b>이 순서대로 자동이체만</b> 걸면 끝
+</h2>
+
+<p>
+실제 돈 이동은 은행 앱에서 직접 설정하고,
+여기서는 날짜와 금액을 자동으로 계산합니다.
+</p>
+
+</div>
+
+</main>
+
+<!-- SAVING -->
+
+<main class="page" id="page-saving">
+
+<section class="story-head">
+
+<div class="story-num">03</div>
+
+<h1>
+모두 같은 조언 X<br>
+<span class="orange-underline">내 단계에 맞는</span> 답
+</h1>
+
+<p>
+사회초년부터 자산 증식 단계까지,
+월급이 같아도 기준 비율을 다르게 볼 수 있게 했습니다.
+</p>
+
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="section-label">
+<span class="dot">📊</span>
+내 단계 선택
+</div>
+
+<div class="ratio-stage-grid">
+
+<button class="ratio-stage active" data-stage="starter">
+<strong>🐣 사회초년</strong>
+<small>생활 60% · 저축 30% · 투자 10%</small>
+</button>
+
+<button class="ratio-stage" data-stage="under1">
+<strong>🌱 1억 미만</strong>
+<small>생활 50% · 저축 30% · 투자 20%</small>
+</button>
+
+<button class="ratio-stage" data-stage="over1">
+<strong>🚀 1억 이상</strong>
+<small>생활 35% · 저축 10% · 투자 55%</small>
+</button>
+
+<button class="ratio-stage" data-stage="over3">
+<strong>🔥 3억 이상</strong>
+<small>생활 30% · 투자 65% · 여유 5%</small>
+</button>
+
+</div>
+
+<div class="card" id="stageResult"></div>
+
+<div class="section-label" style="margin-top:14px">
+<span class="dot">⚡</span>
+월급날 자동이체 루틴
+</div>
+
+<div class="card">
+<div class="timeline" id="timeline"></div>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- TAX -->
+
+<main class="page" id="page-tax">
+
+<section class="story-head">
+
+<div class="story-num">04</div>
+
+<h1>
+뭐부터 할지<br>
+<span class="orange-underline">순서대로</span> 잡아줍니다
+</h1>
+
+<p>
+세제 계좌는 최신 제도 확인이 필요한 영역이라,
+가입을 대신 결정하지 않고 확인 순서를 정리합니다.
+</p>
+
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="result" style="background:linear-gradient(135deg,#252525,#171717)">
+
+<div class="result-title">🧾 절세 계좌 활용</div>
+
+<div style="font-size:22px;font-weight:950;line-height:1.35;margin:8px 0 4px">
+세금을 줄이면<br>
+<span class="c-orange">더 빨리 모여요.</span>
+</div>
+
+<div class="subtext" style="color:#aaa">
+단, 실제 가입 조건과 세제 혜택은 최신 공식 안내를 확인하세요.
+</div>
+
+</div>
+
+
+<div class="callout yellow">
+<b>시호의 한마디</b><br>
+“정답은 이거야”가 아니라,
+지금 단계에서 뭘 먼저 확인할지를 보여주는 용도로 만들었습니다.
+</div>
+
+
+<div class="section-label" style="margin-top:14px">
+<span class="dot">✓</span>
+내 단계에 맞는 절세 체크
+</div>
+
+
+<div class="check-list">
+
+<div class="check-item">
+<div class="check-num">1</div>
+<div>
+<strong>비상금 먼저 확보</strong>
+<small>세제 계좌에 넣기 전에 단기 생활비 쿠션이 있는지 확인합니다.</small>
+</div>
+</div>
+
+<div class="check-item">
+<div class="check-num">2</div>
+<div>
+<strong>ISA 필요성 확인</strong>
+<small>투자 기간, 중도 인출 필요성, 수수료를 먼저 확인합니다.</small>
+</div>
+</div>
+
+<div class="check-item">
+<div class="check-num">3</div>
+<div>
+<strong>연금·IRP 확인</strong>
+<small>오래 묶이는 자금인지, 현재 소득 구조에 맞는지 따져봅니다.</small>
+</div>
+</div>
+
+<div class="check-item">
+<div class="check-num">4</div>
+<div>
+<strong>최신 공식 정보 재확인</strong>
+<small>한도·공제·과세 규정은 바뀔 수 있으므로 가입 직전 최신 자료를 봅니다.</small>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- INVEST -->
+
+<main class="page" id="page-invest">
+
+<section class="story-head">
+
+<div class="story-num">05</div>
+
+<h1>
+생활비를 건드리지 않고<br>
+<span class="orange-underline">투자할 수 있는 금액</span>부터
+</h1>
+
+<p>
+특정 상품을 찍어주는 대신,
+이번 달 투자 여력과 가정 수익률에 따른 미래 금액을 계산합니다.
+</p>
+
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="result">
+
+<div class="result-row">
+<span>이번 달 투자 가능액</span>
+<b id="investBudget" class="c-blue">0원</b>
+</div>
+
+<div class="result-row">
+<span>선택한 연 수익률</span>
+<b id="investReturnRate" class="c-orange">4%</b>
+</div>
+
+<div class="result-row">
+<span>1년 후 예상금액</span>
+<b id="investFuture1" class="c-yellow">0원</b>
+</div>
+
+<div class="result-row">
+<span>5년 후 예상금액</span>
+<b id="investFuture5" class="c-green">0원</b>
+</div>
+
+<div class="result-row">
+<span>10년 후 예상금액</span>
+<b id="investFuture10" class="c-blue">0원</b>
+</div>
+
+<div class="result-row">
+<span>월급 대비 비중</span>
+<b id="investIncomeRate">0%</b>
+</div>
+
+<div class="result-row">
+<span>잔여소득 대비 비중</span>
+<b id="investRemainRate">0%</b>
+</div>
+
+</div>
+
+
+<div class="section-label" style="margin-top:14px">
+<span class="dot">%</span>
+예상 연 수익률 가정
+</div>
+
+
+<div class="risk-buttons">
+
+<button class="risk-button" data-return="2">
+안전 2%
+</button>
+
+<button class="risk-button active" data-return="4">
+보통 4%
+</button>
+
+<button class="risk-button" data-return="6">
+적극 6%
+</button>
+
+</div>
+
+
+<div class="invest-highlight">
+
+<small>현재 선택 기준</small>
+
+<strong id="investSelectedText">
+연 4% 가정
+</strong>
+
+<p id="investSelectedDesc">
+월 투자 가능액을 매달 같은 금액으로 투자한다고 가정한 단순 복리 계산입니다.
+</p>
+
+</div>
+
+
+<div class="callout blue">
+💡 이 수익률은 예측값이 아니라 단순 계산용 가정입니다.
+실제 수익률은 달라질 수 있습니다.
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- FUTURE -->
+
+<main class="page" id="page-future">
+
+<section class="story-head">
+
+<div class="story-num">06</div>
+
+<h1>
+또래와 비교해<br>
+<span class="orange-underline">지금 내 위치와 다음 목표</span>를 표시
+</h1>
+
+<p>
+출처가 불분명한 평균을 자동으로 넣지 않고,
+비교하고 싶은 기준을 직접 입력하도록 했습니다.
+</p>
+
+</section>
+
+<section class="form-section">
+
+<div class="paper">
+
+<div class="section-label">
+<span class="dot">1</span>
+내 위치
+</div>
+
+<div class="card">
+
+<div class="field">
+
+<label>
+비교 기준 순자산
+<small>원하는 기준 직접 입력</small>
+</label>
+
+<div class="inputbox">
+<input id="peerNet" type="number" min="0" value="65000000">
+<span class="unit">원</span>
+</div>
+
+</div>
+
+<div class="compare-grid">
+
+<div class="compare-card">
+<small>내 순자산</small>
+<div class="metric" id="myNet">0원</div>
+</div>
+
+<div class="compare-card accent">
+<small>기준과 차이</small>
+<div class="metric" id="peerGap">0원</div>
+</div>
+
+</div>
+
+<div class="callout yellow" id="peerMessage">
+비교 결과를 계산하는 중입니다.
+</div>
+
+</div>
+
+
+<div class="section-label" style="margin-top:14px">
+<span class="dot">2</span>
+목표 자산
+</div>
+
+
+<div class="card">
+
+<div class="field">
+
+<label>목표 자산</label>
+
+<div class="inputbox">
+<input id="goalAsset" type="number" min="0" value="100000000">
+<span class="unit">원</span>
+</div>
+
+</div>
+
+
+<div class="goal-board">
+
+<div class="goal-row">
+<span>현재 순자산</span>
+<b id="goalCurrent">0원</b>
+</div>
+
+<div class="goal-row">
+<span>월 저축+투자</span>
+<b class="c-yellow" id="goalMonthly">0원</b>
+</div>
+
+<div class="goal-row">
+<span>예상 달성 시점</span>
+<b id="goalDate">-</b>
+</div>
+
+<div class="goal-row">
+<span>D-DAY</span>
+<b class="c-blue" id="goalDday">-</b>
+</div>
+
+</div>
+
+
+<div class="progress">
+<div id="goalProgress"></div>
+</div>
+
+<div class="progress-text">
+<span>현재</span>
+<span id="goalPercent">0%</span>
+<span>목표</span>
+</div>
+
+</div>
+
+
+<div class="section-label" style="margin-top:14px">
+<span class="dot">3</span>
+이대로 가면, 은퇴할 때
+</div>
+
+
+<div class="card">
+
+<div class="field">
+
+<label>은퇴 목표 나이</label>
+
+<div class="inputbox">
+<input id="retireAge" type="range" min="45" max="75" value="60">
+<span class="unit" id="retireAgeText">60세</span>
+</div>
+
+</div>
+
+
+<div class="result">
+
+<div class="result-row">
+<span>은퇴까지</span>
+<b id="yearsLeft">0년</b>
+</div>
+
+<div class="result-row">
+<span>은퇴 시점 예상 순자산</span>
+<b class="c-yellow" id="retireAsset">0원</b>
+</div>
+
+<div class="result-row">
+<span>그중 내가 넣은 원금</span>
+<b id="retirePrincipal">0원</b>
+</div>
+
+<div class="result-row">
+<span>가정 수익</span>
+<b class="c-green" id="retireGain">0원</b>
+</div>
+
+<div class="result-row">
+<span>
+은퇴 후 월 사용 가능액
+<small style="font-size:8px">(30년 단순분할)</small>
+</span>
+<b class="c-blue" id="retireMonthly">0원</b>
+</div>
+
+</div>
+
+<div class="callout blue" id="retireMessage">
+은퇴 진단을 계산하는 중입니다.
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<div class="story-break">
+
+<div class="bubble">END</div>
+
+<h2>
+월급 → 통장 → 저축 → 절세 → 투자 → 미래<br>
+<b>다음 행동이 끊기지 않게</b>
+</h2>
+
+<p>
+한 번 입력한 숫자가 모든 단계에 연결되도록 구성했습니다.
+</p>
+
+</div>
+
+</main>
+
+
+<div class="footer-note">
+이 웹앱은 개인 돈관리 시뮬레이션용입니다.
+실제 금융상품 가입·세금·연금 판단 전에는 최신 공식 정보를 확인하세요.
+</div>
+
+</div>
+
+
 <script>
+
 const $ = (s)=>document.querySelector(s);
 const $$ = (s)=>[...document.querySelectorAll(s)];
 
 const inputIds = [
-  "income","age","payday","assets","debt",
-  "housing","phone","transport","food","car","etc",
-  "peerNet","goalAsset","retireAge"
+  "income",
+  "age",
+  "payday",
+  "assets",
+  "debt",
+  "housing",
+  "phone",
+  "transport",
+  "food",
+  "car",
+  "etc",
+  "peerNet",
+  "goalAsset",
+  "retireAge"
 ];
 
 const stagePresets = {
-  starter:{name:"사회초년", life:60, save:30, invest:10, extra:0},
-  under1:{name:"1억 미만", life:50, save:30, invest:20, extra:0},
-  over1:{name:"1억 이상", life:35, save:10, invest:55, extra:0},
-  over3:{name:"3억 이상", life:30, save:0, invest:65, extra:5}
+
+starter:{
+  name:"사회초년",
+  life:60,
+  save:30,
+  invest:10,
+  extra:0
+},
+
+under1:{
+  name:"1억 미만",
+  life:50,
+  save:30,
+  invest:20,
+  extra:0
+},
+
+over1:{
+  name:"1억 이상",
+  life:35,
+  save:10,
+  invest:55,
+  extra:0
+},
+
+over3:{
+  name:"3억 이상",
+  life:30,
+  save:0,
+  invest:65,
+  extra:5
+}
+
 };
 
-let stage = localStorage.getItem("siho_stage_v4") || "starter";
-let annualReturn = Number(localStorage.getItem("siho_return_v4") || 4);
-let activePage = localStorage.getItem("siho_page_v4") || "start";
+let stage =
+  localStorage.getItem("siho_stage_v4") || "starter";
+
+let annualReturn =
+  Number(localStorage.getItem("siho_return_v4") || 4);
+
+let activePage =
+  localStorage.getItem("siho_page_v4") || "start";
+
 
 function num(id){
+
   const el=$(id);
-  return Math.max(0, Number(el?.value || 0));
+
+  return Math.max(
+    0,
+    Number(el?.value || 0)
+  );
+
 }
+
+
 function won(v){
-  if(!Number.isFinite(v)) v=0;
-  return Math.round(v).toLocaleString("ko-KR")+"원";
+
+  if(!Number.isFinite(v)){
+    v=0;
+  }
+
+  return Math.round(v)
+    .toLocaleString("ko-KR")+"원";
+
 }
+
+
 function shortWon(v){
+
   v=Math.round(v);
+
   const abs=Math.abs(v);
+
   if(abs>=100000000){
+
     const e=v/100000000;
-    return (Math.round(e*10)/10).toLocaleString("ko-KR")+"억";
+
+    return (
+      Math.round(e*10)/10
+    ).toLocaleString("ko-KR")+"억";
+
   }
+
   if(abs>=10000){
-    return Math.round(v/10000).toLocaleString("ko-KR")+"만";
+
+    return Math.round(v/10000)
+      .toLocaleString("ko-KR")+"만";
+
   }
+
   return v.toLocaleString("ko-KR")+"원";
+
 }
+
+
 function expense(){
-  return num("#housing")+num("#phone")+num("#transport")+num("#food")+num("#car")+num("#etc");
+
+  return (
+    num("#housing")+
+    num("#phone")+
+    num("#transport")+
+    num("#food")+
+    num("#car")+
+    num("#etc")
+  );
+
 }
+
+
 function remaining(){
-  return Math.max(0,num("#income")-expense());
+
+  return Math.max(
+    0,
+    num("#income")-expense()
+  );
+
 }
+
+
 function netAsset(){
+
   return num("#assets")-num("#debt");
+
 }
+
+
 function salarySplit(){
+
   const r=remaining();
+
   return {
+
     save:r*.55,
+
     invest:r*.30,
+
     emergency:r*.15
+
   };
+
 }
+
+
 function stageSplit(){
-  const s=stagePresets[stage], income=num("#income");
+
+  const s=stagePresets[stage];
+
+  const income=num("#income");
+
   return {
+
     life:income*s.life/100,
+
     save:income*s.save/100,
+
     invest:income*s.invest/100,
+
     extra:income*s.extra/100
+
   };
+
 }
-function addMonths(date, months){
+
+
+function addMonths(date,months){
+
   const d=new Date(date);
+
   const day=d.getDate();
-  d.setMonth(d.getMonth()+months);
-  if(d.getDate()<day) d.setDate(0);
+
+  d.setMonth(
+    d.getMonth()+months
+  );
+
+  if(d.getDate()<day){
+    d.setDate(0);
+  }
+
   return d;
+
 }
+
+
 function fmtDate(d){
-  if(!(d instanceof Date) || isNaN(d)) return "-";
-  return `${d.getFullYear()}년 ${d.getMonth()+1}월`;
+
+  if(
+    !(d instanceof Date) ||
+    isNaN(d)
+  ){
+    return "-";
+  }
+
+  return (
+    `${d.getFullYear()}년 ${d.getMonth()+1}월`
+  );
+
 }
+
+
 function persist(){
+
   inputIds.forEach(id=>{
+
     const el=$("#"+id);
-    if(el) localStorage.setItem("siho_v4_"+id,el.value);
-  });
-  localStorage.setItem("siho_stage_v4",stage);
-  localStorage.setItem("siho_return_v4",annualReturn);
-  localStorage.setItem("siho_page_v4",activePage);
-  $("#saveState").textContent="저장됨";
-}
-function restore(){
-  inputIds.forEach(id=>{
-    const v=localStorage.getItem("siho_v4_"+id);
-    const el=$("#"+id);
-    if(v!==null && el) el.value=v;
-  });
-}
-function showPage(page){
-  activePage=page;
-  $$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));
-  $$("#tabs button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
-  const active=$("#tabs button.active");
-  active?.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});
-  window.scrollTo({top:0,behavior:"smooth"});
-  persist();
-}
-function bar(name,p,cls){
-  return `<div class="bar">
-    <div class="bar-head"><span>${name}</span><b>${p}%</b></div>
-    <div class="bar-track"><div class="bar-fill ${cls}" style="width:${p}%"></div></div>
-  </div>`;
-}
-function renderAccounts(){
-  const s=salarySplit();
-  const income=num("#income"), exp=expense();
-  const accounts=[
-    {
-      icon:"💳",name:"급여통장",sub:"월급이 들어오는 통장 · 이체 편의 중심",
-      desc:"월급이 들어오는 시작 통장입니다. 월급일에 목적별 통장으로 돈을 나누는 출발점으로 사용합니다.",
-      amount:income,
-      recs:[
-        ["주거래 입출금통장","자동이체 설정이 쉽고 이체수수료 조건이 단순한 계좌","자동이체 편의 · 수수료 확인"],
-        ["보조 입출금통장","급여 통장과 분리해 월급 흐름을 보기 쉬운 계좌","월급 흐름 분리"]
-      ]
-    },
-    {
-      icon:"🔒",name:"고정비통장",sub:"주거·통신·보험 등 자동이체 전용",
-      desc:"매달 거의 같은 날짜에 빠져나가는 돈만 모아둡니다. 다른 소비에 쓰지 않도록 분리하는 게 핵심입니다.",
-      amount:exp,
-      recs:[
-        ["고정비 전용 입출금통장","자동이체 내역을 한눈에 볼 수 있는 단순한 계좌","지출 추적이 쉬움"],
-        ["자동이체 전용 보조통장","카드를 연결하지 않고 고정비만 빠져나가게 관리","과소비 차단"]
-      ]
-    },
-    {
-      icon:"🛒",name:"생활비통장",sub:"체크카드 연결 · 예산 소비용",
-      desc:"식비·교통·일상 소비를 여기서만 쓰는 방식입니다. 잔액이 곧 남은 생활비가 되도록 단순하게 관리합니다.",
-      amount:Math.min(income, num("#food")+num("#transport")+num("#etc")),
-      recs:[
-        ["생활비 전용 통장","체크카드 사용 내역과 잔액 확인이 쉬운 계좌","남은 예산 확인"],
-        ["주간 예산 통장","한 달 예산을 주 단위로 나눠 쓰는 보조 계좌","속도 조절에 유리"]
-      ]
-    },
-    {
-      icon:"🧯",name:"비상금통장",sub:"3~6개월치 생활 안전망 목표",
-      desc:"갑작스러운 지출을 위한 완충 통장입니다. 생활비와 섞지 않고 평소에는 손대지 않는 구조로 둡니다.",
-      amount:s.emergency,
-      recs:[
-        ["비상금 전용 통장","필요할 때 꺼낼 수 있으면서 평소엔 분리되는 계좌","생활비와 완전 분리"],
-        ["단기 안전자금 통장","즉시 사용할 수 있는 현금성 자금 보관","접근성 우선"]
-      ]
-    },
-    {
-      icon:"📈",name:"투자통장",sub:"투자금만 분리 · 생활비와 차단",
-      desc:"이번 달 투자할 수 있는 금액을 생활비와 분리해서 관리합니다. 실제 상품 선택 전에는 기간과 위험도를 따로 확인합니다.",
-      amount:s.invest,
-      recs:[
-        ["투자 대기자금 통장","정해둔 투자금만 보관하는 계좌","투자 한도 관리"],
-        ["증권계좌 연결용 통장","투자 이체만 담당하는 보조 통장","생활비와 분리"]
-      ]
+
+    if(el){
+
+      localStorage.setItem(
+        "siho_v4_"+id,
+        el.value
+      );
+
     }
-  ];
-  $("#accounts").innerHTML=accounts.map((a,i)=>`
-    <div class="account ${i===0?"open":""}">
-      <div class="account-head">
-        <div class="account-title">
-          <span>${a.icon}</span>
-          <div><strong>${a.name}</strong><small>${a.sub}</small></div>
-        </div>
-        <span class="chev">⌄</span>
-      </div>
-      <div class="account-body">
-        ${a.desc}
-        <div class="rec-card">
-          <strong><span>이번 달 이동액</span><span>${won(a.amount)}</span></strong>
-        </div>
-        <div style="font-size:9px;font-weight:900;margin-top:8px;color:#555">추천 구조 TOP 2</div>
-        ${a.recs.map((r,idx)=>`
-          <div class="rec-card">
-            <strong><span>${r[0]}</span><span class="rank">${idx+1}순위</span></strong>
-            <p>${r[1]}</p>
-            <div class="why">✅ 추천 이유: ${r[2]}</div>
-          </div>
-        `).join("")}
-      </div>
-    </div>
-  `).join("");
-  $$(".account-head").forEach(head=>{
-    head.addEventListener("click",()=>head.parentElement.classList.toggle("open"));
+
   });
+
+  localStorage.setItem(
+    "siho_stage_v4",
+    stage
+  );
+
+  localStorage.setItem(
+    "siho_return_v4",
+    annualReturn
+  );
+
+  localStorage.setItem(
+    "siho_page_v4",
+    activePage
+  );
+
+  $("#saveState").textContent="저장됨";
+
 }
-function renderStage(){
-  const p=stagePresets[stage], m=stageSplit();
-  $("#stageResult").innerHTML=`
-    <div class="section-label"><span class="dot">📊</span>${p.name} 추천 비율</div>
-    <div class="ratio-bars">
-      ${bar("생활비",p.life,"life")}
-      ${bar("저축",p.save,"save")}
-      ${bar("투자",p.invest,"invest")}
-      ${p.extra?bar("여유/자기계발",p.extra,"extra"):""}
+
+
+function restore(){
+
+  inputIds.forEach(id=>{
+
+    const v=
+      localStorage.getItem(
+        "siho_v4_"+id
+      );
+
+    const el=$("#"+id);
+
+    if(v!==null && el){
+      el.value=v;
+    }
+
+  });
+
+}
+
+
+function showPage(page){
+
+  activePage=page;
+
+  $$(".page").forEach(p=>{
+
+    p.classList.toggle(
+      "active",
+      p.id==="page-"+page
+    );
+
+  });
+
+  $$("#tabs button").forEach(b=>{
+
+    b.classList.toggle(
+      "active",
+      b.dataset.page===page
+    );
+
+  });
+
+  const active=
+    $("#tabs button.active");
+
+  active?.scrollIntoView({
+    behavior:"smooth",
+    inline:"center",
+    block:"nearest"
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  persist();
+
+}
+
+
+function bar(name,p,cls){
+
+  return `
+  <div class="bar">
+
+    <div class="bar-head">
+      <span>${name}</span>
+      <b>${p}%</b>
     </div>
-    <div class="money-split">
-      <div class="split-row"><span>월급 ${won(num("#income"))} 기준</span><b></b></div>
-      <div class="split-row"><span>생활비 ${p.life}%</span><b>${won(m.life)}</b></div>
-      <div class="split-row"><span>저축 ${p.save}%</span><b class="c-orange">${won(m.save)}</b></div>
-      <div class="split-row"><span>투자 ${p.invest}%</span><b class="c-blue">${won(m.invest)}</b></div>
-      ${p.extra?`<div class="split-row"><span>여유/자기계발 ${p.extra}%</span><b class="c-green">${won(m.extra)}</b></div>`:""}
+
+    <div class="bar-track">
+      <div
+        class="bar-fill ${cls}"
+        style="width:${p}%">
+      </div>
     </div>
-    <div class="callout yellow">이 비율은 정답이 아니라 단계별 기본안입니다. 실제 고정비가 높으면 생활비부터 현실에 맞게 조정하세요.</div>
+
+  </div>
   `;
+
 }
-function renderTimeline(){
-  const p=stageSplit();
-  const payday=Math.max(1,Math.min(31,Math.round(num("#payday")||1)));
-  const items=[
-    [`${payday}일`,"월급 확인",num("#income"),"급여통장"],
-    [`${payday}일`,"고정비 이동",expense(),"고정비통장"],
-    [`${Math.min(payday+1,31)}일`,"저축 먼저 이동",p.save,"저축용 통장"],
-    [`${Math.min(payday+1,31)}일`,"투자금 분리",p.invest,"투자통장"],
-    [`${Math.min(payday+2,31)}일`,"생활비 한도만 남기기",p.life,"생활비통장"]
-  ];
-  $("#timeline").innerHTML=items.map(i=>`
-    <div class="timeline-row">
-      <strong><span>${i[0]} · ${i[1]}</span><span>${won(i[2])}</span></strong>
-      <small>${i[3]}</small>
-    </div>
-  `).join("");
-}
-function calcGoal(){
-  const current=Math.max(0,netAsset());
-  const goal=num("#goalAsset");
+
+
+function renderAccounts(){
+
   const s=salarySplit();
-  const monthly=s.save+s.invest;
-  $("#goalCurrent").textContent=won(current);
-  $("#goalMonthly").textContent=won(monthly);
+
+  const income=num("#income");
+
+  const exp=expense();
+
+  const accounts=[
+
+  {
+    icon:"💳",
+    name:"급여통장",
+    sub:"월급이 들어오는 통장 · 이체 편의 중심",
+
+    desc:
+    "월급이 들어오는 시작 통장입니다. 월급일에 목적별 통장으로 돈을 나누는 출발점으로 사용합니다.",
+
+    amount:income,
+
+    recs:[
+
+      [
+        "주거래 입출금통장",
+        "자동이체 설정이 쉽고 이체수수료 조건이 단순한 계좌",
+        "자동이체 편의 · 수수료 확인"
+      ],
+
+      [
+        "보조 입출금통장",
+        "급여 통장과 분리해 월급 흐름을 보기 쉬운 계좌",
+        "월급 흐름 분리"
+      ]
+
+    ]
+  },
+
+  {
+    icon:"🔒",
+    name:"고정비통장",
+    sub:"주거·통신·보험 등 자동이체 전용",
+
+    desc:
+    "매달 거의 같은 날짜에 빠져나가는 돈만 모아둡니다. 다른 소비에 쓰지 않도록 분리하는 게 핵심입니다.",
+
+    amount:exp,
+
+    recs:[
+
+      [
+        "고정비 전용 입출금통장",
+        "자동이체 내역을 한눈에 볼 수 있는 단순한 계좌",
+        "지출 추적이 쉬움"
+      ],
+
+      [
+        "자동이체 전용 보조통장",
+        "카드를 연결하지 않고 고정비만 빠져나가게 관리",
+        "과소비 차단"
+      ]
+
+    ]
+  },
+
+  {
+    icon:"🛒",
+    name:"생활비통장",
+    sub:"체크카드 연결 · 예산 소비용",
+
+    desc:
+    "식비·교통·일상 소비를 여기서만 쓰는 방식입니다. 잔액이 곧 남은 생활비가 되도록 단순하게 관리합니다.",
+
+    amount:
+      Math.min(
+        income,
+        num("#food")+
+        num("#transport")+
+        num("#etc")
+      ),
+
+    recs:[
+
+      [
+        "생활비 전용 통장",
+        "체크카드 사용 내역과 잔액 확인이 쉬운 계좌",
+        "남은 예산 확인"
+      ],
+
+      [
+        "주간 예산 통장",
+        "한 달 예산을 주 단위로 나눠 쓰는 보조 계좌",
+        "속도 조절에 유리"
+      ]
+
+    ]
+  },
+
+  {
+    icon:"🧯",
+    name:"비상금통장",
+    sub:"3~6개월치 생활 안전망 목표",
+
+    desc:
+    "갑작스러운 지출을 위한 완충 통장입니다. 생활비와 섞지 않고 평소에는 손대지 않는 구조로 둡니다.",
+
+    amount:s.emergency,
+
+    recs:[
+
+      [
+        "비상금 전용 통장",
+        "필요할 때 꺼낼 수 있으면서 평소엔 분리되는 계좌",
+        "생활비와 완전 분리"
+      ],
+
+      [
+        "단기 안전자금 통장",
+        "즉시 사용할 수 있는 현금성 자금 보관",
+        "접근성 우선"
+      ]
+
+    ]
+  },
+
+  {
+    icon:"📈",
+    name:"투자통장",
+    sub:"투자금만 분리 · 생활비와 차단",
+
+    desc:
+    "이번 달 투자할 수 있는 금액을 생활비와 분리해서 관리합니다. 실제 상품 선택 전에는 기간과 위험도를 따로 확인합니다.",
+
+    amount:s.invest,
+
+    recs:[
+
+      [
+        "투자 대기자금 통장",
+        "정해둔 투자금만 보관하는 계좌",
+        "투자 한도 관리"
+      ],
+
+      [
+        "증권계좌 연결용 통장",
+        "투자 이체만 담당하는 보조 통장",
+        "생활비와 분리"
+      ]
+
+    ]
+  }
+
+  ];
+
+
+  $("#accounts").innerHTML=
+
+    accounts.map((a,i)=>`
+
+    <div class="account ${i===0?"open":""}">
+
+      <div class="account-head">
+
+        <div class="account-title">
+
+          <span>${a.icon}</span>
+
+          <div>
+
+            <strong>${a.name}</strong>
+
+            <small>${a.sub}</small>
+
+          </div>
+
+        </div>
+
+        <span class="chev">⌄</span>
+
+      </div>
+
+      <div class="account-body">
+
+        ${a.desc}
+
+        <div class="rec-card">
+
+          <strong>
+
+            <span>이번 달 이동액</span>
+
+            <span>${won(a.amount)}</span>
+
+          </strong>
+
+        </div>
+
+        <div style="
+          font-size:9px;
+          font-weight:900;
+          margin-top:8px;
+          color:#555">
+
+          추천 구조 TOP 2
+
+        </div>
+
+        ${a.recs.map((r,idx)=>`
+
+          <div class="rec-card">
+
+            <strong>
+
+              <span>${r[0]}</span>
+
+              <span class="rank">
+                ${idx+1}순위
+              </span>
+
+            </strong>
+
+            <p>${r[1]}</p>
+
+            <div class="why">
+
+              ✅ 추천 이유:
+              ${r[2]}
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+
+  $$(".account-head").forEach(head=>{
+
+    head.addEventListener(
+      "click",
+      ()=>{
+        head.parentElement
+          .classList
+          .toggle("open");
+      }
+    );
+
+  });
+
+}
+
+
+function renderStage(){
+
+  const p=stagePresets[stage];
+
+  const m=stageSplit();
+
+  $("#stageResult").innerHTML=`
+
+  <div class="section-label">
+
+    <span class="dot">
+      📊
+    </span>
+
+    ${p.name} 추천 비율
+
+  </div>
+
+  <div class="ratio-bars">
+
+    ${bar(
+      "생활비",
+      p.life,
+      "life"
+    )}
+
+    ${bar(
+      "저축",
+      p.save,
+      "save"
+    )}
+
+    ${bar(
+      "투자",
+      p.invest,
+      "invest"
+    )}
+
+    ${
+      p.extra
+      ?
+      bar(
+        "여유/자기계발",
+        p.extra,
+        "extra"
+      )
+      :
+      ""
+    }
+
+  </div>
+
+  <div class="money-split">
+
+    <div class="split-row">
+
+      <span>
+        월급
+        ${won(num("#income"))}
+        기준
+      </span>
+
+      <b></b>
+
+    </div>
+
+    <div class="split-row">
+
+      <span>
+        생활비 ${p.life}%
+      </span>
+
+      <b>
+        ${won(m.life)}
+      </b>
+
+    </div>
+
+    <div class="split-row">
+
+      <span>
+        저축 ${p.save}%
+      </span>
+
+      <b class="c-orange">
+        ${won(m.save)}
+      </b>
+
+    </div>
+
+    <div class="split-row">
+
+      <span>
+        투자 ${p.invest}%
+      </span>
+
+      <b class="c-blue">
+        ${won(m.invest)}
+      </b>
+
+    </div>
+
+    ${
+      p.extra
+      ?
+      `
+      <div class="split-row">
+
+        <span>
+          여유/자기계발
+          ${p.extra}%
+        </span>
+
+        <b class="c-green">
+          ${won(m.extra)}
+        </b>
+
+      </div>
+      `
+      :
+      ""
+    }
+
+  </div>
+
+  <div class="callout yellow">
+
+    이 비율은 정답이 아니라
+    단계별 기본안입니다.
+
+    실제 고정비가 높으면
+    생활비부터 현실에 맞게 조정하세요.
+
+  </div>
+
+  `;
+
+}
+
+
+function renderTimeline(){
+
+  const p=stageSplit();
+
+  const payday=
+    Math.max(
+      1,
+      Math.min(
+        31,
+        Math.round(
+          num("#payday")||1
+        )
+      )
+    );
+
+  const items=[
+
+    [
+      `${payday}일`,
+      "월급 확인",
+      num("#income"),
+      "급여통장"
+    ],
+
+    [
+      `${payday}일`,
+      "고정비 이동",
+      expense(),
+      "고정비통장"
+    ],
+
+    [
+      `${Math.min(payday+1,31)}일`,
+      "저축 먼저 이동",
+      p.save,
+      "저축용 통장"
+    ],
+
+    [
+      `${Math.min(payday+1,31)}일`,
+      "투자금 분리",
+      p.invest,
+      "투자통장"
+    ],
+
+    [
+      `${Math.min(payday+2,31)}일`,
+      "생활비 한도만 남기기",
+      p.life,
+      "생활비통장"
+    ]
+
+  ];
+
+
+  $("#timeline").innerHTML=
+
+    items.map(i=>`
+
+      <div class="timeline-row">
+
+        <strong>
+
+          <span>
+            ${i[0]} · ${i[1]}
+          </span>
+
+          <span>
+            ${won(i[2])}
+          </span>
+
+        </strong>
+
+        <small>
+          ${i[3]}
+        </small>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function calcGoal(){
+
+  const current=
+    Math.max(
+      0,
+      netAsset()
+    );
+
+  const goal=
+    num("#goalAsset");
+
+  const s=
+    salarySplit();
+
+  const monthly=
+    s.save+s.invest;
+
+
+  $("#goalCurrent")
+    .textContent=
+    won(current);
+
+
+  $("#goalMonthly")
+    .textContent=
+    won(monthly);
+
 
   if(goal<=current){
-    $("#goalDate").textContent="이미 달성";
-    $("#goalDday").textContent="D-DAY 0";
-  }else if(monthly<=0){
-    $("#goalDate").textContent="월 저축·투자 필요";
-    $("#goalDday").textContent="-";
-  }else{
-    const months=Math.ceil((goal-current)/monthly);
-    const target=addMonths(new Date(),months);
-    const days=Math.max(0,Math.ceil((target-new Date())/86400000));
-    $("#goalDate").textContent=fmtDate(target);
-    $("#goalDday").textContent="D-"+days.toLocaleString();
+
+    $("#goalDate")
+      .textContent=
+      "이미 달성";
+
+    $("#goalDday")
+      .textContent=
+      "D-DAY 0";
+
   }
-  const pct=goal>0?Math.max(0,Math.min(100,current/goal*100)):0;
-  $("#goalProgress").style.width=pct+"%";
-  $("#goalPercent").textContent=(Math.round(pct*10)/10)+"%";
+
+  else if(monthly<=0){
+
+    $("#goalDate")
+      .textContent=
+      "월 저축·투자 필요";
+
+    $("#goalDday")
+      .textContent=
+      "-";
+
+  }
+
+  else{
+
+    const months=
+      Math.ceil(
+        (goal-current)/monthly
+      );
+
+    const target=
+      addMonths(
+        new Date(),
+        months
+      );
+
+    const days=
+      Math.max(
+        0,
+        Math.ceil(
+          (target-new Date())/
+          86400000
+        )
+      );
+
+    $("#goalDate")
+      .textContent=
+      fmtDate(target);
+
+    $("#goalDday")
+      .textContent=
+      "D-"+
+      days.toLocaleString();
+
+  }
+
+
+  const pct=
+
+    goal>0
+
+    ?
+
+    Math.max(
+      0,
+      Math.min(
+        100,
+        current/goal*100
+      )
+    )
+
+    :
+
+    0;
+
+
+  $("#goalProgress")
+    .style.width=
+    pct+"%";
+
+
+  $("#goalPercent")
+    .textContent=
+    (
+      Math.round(pct*10)/10
+    )+"%";
+
 }
+
+
+/* ========================================
+   투자 수익률 계산
+   ======================================== */
+
+function calcInvestmentFuture(
+  monthly,
+  years
+){
+
+  const months=
+    years*12;
+
+  const monthlyRate=
+    annualReturn/
+    100/
+    12;
+
+
+  if(monthly<=0){
+    return 0;
+  }
+
+
+  if(monthlyRate===0){
+
+    return (
+      monthly*
+      months
+    );
+
+  }
+
+
+  return (
+
+    monthly *
+
+    (
+      (
+        Math.pow(
+          1+monthlyRate,
+          months
+        )
+        -
+        1
+      )
+
+      /
+
+      monthlyRate
+
+    )
+
+  );
+
+}
+
+
+/* ========================================
+   투자 화면 계산 및 표시
+   ======================================== */
+
+function calcInvestment(){
+
+  const inc=
+    num("#income");
+
+  const r=
+    remaining();
+
+  const s=
+    salarySplit();
+
+
+  const future1=
+    calcInvestmentFuture(
+      s.invest,
+      1
+    );
+
+
+  const future5=
+    calcInvestmentFuture(
+      s.invest,
+      5
+    );
+
+
+  const future10=
+    calcInvestmentFuture(
+      s.invest,
+      10
+    );
+
+
+  $("#investBudget")
+    .textContent=
+    won(s.invest);
+
+
+  $("#investReturnRate")
+    .textContent=
+    annualReturn+"%";
+
+
+  $("#investFuture1")
+    .textContent=
+    won(future1);
+
+
+  $("#investFuture5")
+    .textContent=
+    won(future5);
+
+
+  $("#investFuture10")
+    .textContent=
+    won(future10);
+
+
+  $("#investIncomeRate")
+    .textContent=
+
+    inc
+
+    ?
+
+    Math.round(
+      s.invest/inc*100
+    )+"%"
+
+    :
+
+    "0%";
+
+
+  $("#investRemainRate")
+    .textContent=
+
+    r
+
+    ?
+
+    Math.round(
+      s.invest/r*100
+    )+"%"
+
+    :
+
+    "0%";
+
+
+  $("#investSelectedText")
+    .textContent=
+
+    `연 ${annualReturn}% 가정`;
+
+
+  $("#investSelectedDesc")
+    .textContent=
+
+    `월 ${won(s.invest)}을 매달 투자한다고 가정하면 10년 후 예상금액은 ${won(future10)}입니다.`;
+
+}
+
+
+/* ========================================
+   은퇴 계산
+   ======================================== */
+
 function calcRetirement(){
-  const age=num("#age");
-  const target=Math.max(age,num("#retireAge"));
-  const years=Math.max(0,target-age);
-  const months=years*12;
-  const net=Math.max(0,netAsset());
-  const s=salarySplit();
-  const monthly=s.save+s.invest;
-  const mr=annualReturn/100/12;
+
+  const age=
+    num("#age");
+
+  const target=
+    Math.max(
+      age,
+      num("#retireAge")
+    );
+
+  const years=
+    Math.max(
+      0,
+      target-age
+    );
+
+  const months=
+    years*12;
+
+  const net=
+    Math.max(
+      0,
+      netAsset()
+    );
+
+  const s=
+    salarySplit();
+
+  const monthly=
+    s.save+s.invest;
+
+  const mr=
+    annualReturn/
+    100/
+    12;
+
 
   let fv=net;
+
+
   if(months>0){
-    fv = net*Math.pow(1+mr,months) +
-      (mr>0 ? monthly*((Math.pow(1+mr,months)-1)/mr) : monthly*months);
+
+    fv=
+
+      net*
+      Math.pow(
+        1+mr,
+        months
+      )
+
+      +
+
+      (
+        mr>0
+
+        ?
+
+        monthly*
+        (
+          (
+            Math.pow(
+              1+mr,
+              months
+            )
+            -
+            1
+          )
+          /
+          mr
+        )
+
+        :
+
+        monthly*
+        months
+      );
+
   }
-  const principal=net+monthly*months;
-  const gain=Math.max(0,fv-principal);
-  const monthlyUse=fv/(30*12);
 
-  $("#retireAgeText").textContent=Math.round(target)+"세";
-  $("#yearsLeft").textContent=years+"년";
-  $("#retireAsset").textContent=shortWon(fv);
-  $("#retirePrincipal").textContent=shortWon(principal);
-  $("#retireGain").textContent="+"+shortWon(gain);
-  $("#retireMonthly").textContent=won(monthlyUse);
-  $("#retireMessage").innerHTML=`📅 은퇴 시점 예상 자산은 <b>${shortWon(fv)}</b>입니다. 연 ${annualReturn}% 수익률을 단순 가정한 값이며 실제 결과와 다를 수 있어요.`;
+
+  const principal=
+    net+
+    monthly*
+    months;
+
+
+  const gain=
+    Math.max(
+      0,
+      fv-principal
+    );
+
+
+  const monthlyUse=
+    fv/
+    (30*12);
+
+
+  $("#retireAgeText")
+    .textContent=
+    Math.round(target)+"세";
+
+
+  $("#yearsLeft")
+    .textContent=
+    years+"년";
+
+
+  $("#retireAsset")
+    .textContent=
+    shortWon(fv);
+
+
+  $("#retirePrincipal")
+    .textContent=
+    shortWon(principal);
+
+
+  $("#retireGain")
+    .textContent=
+    "+"+shortWon(gain);
+
+
+  $("#retireMonthly")
+    .textContent=
+    won(monthlyUse);
+
+
+  $("#retireMessage")
+    .innerHTML=
+
+    `📅 은퇴 시점 예상 자산은 <b>${shortWon(fv)}</b>입니다. 연 ${annualReturn}% 수익률을 단순 가정한 값이며 실제 결과와 다를 수 있어요.`;
+
 }
+
+
+/* ========================================
+   비교 계산
+   ======================================== */
+
 function calcPeer(){
-  const net=netAsset(), peer=num("#peerNet"), gap=net-peer;
-  $("#myNet").textContent=won(net);
-  $("#peerGap").textContent=(gap>0?"+":"")+won(gap);
-  $("#peerMessage").innerHTML = gap>=0
-    ? `지정한 비교 기준보다 <b>${won(gap)}</b> 위에 있습니다. 기준은 사용자가 직접 정한 값입니다.`
-    : `지정한 비교 기준까지 <b>${won(Math.abs(gap))}</b> 차이입니다. 월 저축률을 올리거나 목표 기간을 길게 잡아볼 수 있어요.`;
+
+  const net=
+    netAsset();
+
+  const peer=
+    num("#peerNet");
+
+  const gap=
+    net-peer;
+
+
+  $("#myNet")
+    .textContent=
+    won(net);
+
+
+  $("#peerGap")
+    .textContent=
+
+    (gap>0?"+":"")
+    +
+    won(gap);
+
+
+  $("#peerMessage")
+    .innerHTML=
+
+    gap>=0
+
+    ?
+
+    `지정한 비교 기준보다 <b>${won(gap)}</b> 위에 있습니다. 기준은 사용자가 직접 정한 값입니다.`
+
+    :
+
+    `지정한 비교 기준까지 <b>${won(Math.abs(gap))}</b> 차이입니다. 월 저축률을 올리거나 목표 기간을 길게 잡아볼 수 있어요.`;
+
 }
+
+
+/* ========================================
+   전체 계산
+   ======================================== */
+
 function calculate(){
-  const inc=num("#income"), e=expense(), r=remaining(), s=salarySplit(), net=netAsset();
 
-  $("#rIncome").textContent=won(inc);
-  $("#rExpense").textContent=won(e);
-  $("#rRemain").textContent=won(r);
-  $("#rSave").textContent=won(s.save);
-  $("#rInvest").textContent=won(s.invest);
-  $("#rEmergency").textContent=won(s.emergency);
+  const inc=
+    num("#income");
 
-  $("#startIncome").textContent=won(inc);
-  $("#startExpense").textContent=won(e);
-  $("#startRemain").textContent=won(r);
-  $("#startNet").textContent=won(net);
+  const e=
+    expense();
 
-  $("#investBudget").textContent=won(s.invest);
-  $("#investIncomeRate").textContent=inc?Math.round(s.invest/inc*100)+"%":"0%";
-  $("#investRemainRate").textContent=r?Math.round(s.invest/r*100)+"%":"0%";
+  const r=
+    remaining();
+
+  const s=
+    salarySplit();
+
+  const net=
+    netAsset();
+
+
+  $("#rIncome")
+    .textContent=
+    won(inc);
+
+
+  $("#rExpense")
+    .textContent=
+    won(e);
+
+
+  $("#rRemain")
+    .textContent=
+    won(r);
+
+
+  $("#rSave")
+    .textContent=
+    won(s.save);
+
+
+  $("#rInvest")
+    .textContent=
+    won(s.invest);
+
+
+  $("#rEmergency")
+    .textContent=
+    won(s.emergency);
+
+
+  $("#startIncome")
+    .textContent=
+    won(inc);
+
+
+  $("#startExpense")
+    .textContent=
+    won(e);
+
+
+  $("#startRemain")
+    .textContent=
+    won(r);
+
+
+  $("#startNet")
+    .textContent=
+    won(net);
+
+
+  calcInvestment();
 
   renderAccounts();
+
   renderStage();
+
   renderTimeline();
+
   calcPeer();
+
   calcGoal();
+
   calcRetirement();
+
   persist();
+
 }
 
-$("#tabs").addEventListener("click",(e)=>{
-  const b=e.target.closest("[data-page]");
-  if(b) showPage(b.dataset.page);
-});
-$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.jump)));
+
+/* ========================================
+   탭
+   ======================================== */
+
+$("#tabs")
+  .addEventListener(
+    "click",
+    (e)=>{
+
+      const b=
+        e.target.closest(
+          "[data-page]"
+        );
+
+      if(b){
+
+        showPage(
+          b.dataset.page
+        );
+
+      }
+
+    }
+  );
+
+
+$$("[data-jump]")
+  .forEach(
+    b=>
+      b.addEventListener(
+        "click",
+        ()=>showPage(
+          b.dataset.jump
+        )
+      )
+  );
+
+
+/* ========================================
+   입력값 변경
+   ======================================== */
 
 inputIds.forEach(id=>{
-  const el=$("#"+id);
-  if(el) el.addEventListener("input",calculate);
+
+  const el=
+    $("#"+id);
+
+  if(el){
+
+    el.addEventListener(
+      "input",
+      calculate
+    );
+
+  }
+
 });
 
-$$(".ratio-stage").forEach(b=>{
-  b.addEventListener("click",()=>{
-    stage=b.dataset.stage;
-    $$(".ratio-stage").forEach(x=>x.classList.toggle("active",x===b));
-    calculate();
+
+/* ========================================
+   자산 단계 버튼
+   ======================================== */
+
+$$(".ratio-stage")
+  .forEach(b=>{
+
+    b.addEventListener(
+      "click",
+      ()=>{
+
+        stage=
+          b.dataset.stage;
+
+        $$(".ratio-stage")
+          .forEach(x=>
+
+            x.classList.toggle(
+              "active",
+              x===b
+            )
+
+          );
+
+        calculate();
+
+      }
+    );
+
   });
-});
 
-$$(".risk-button").forEach(b=>{
-  b.addEventListener("click",()=>{
-    annualReturn=Number(b.dataset.return);
-    $$(".risk-button").forEach(x=>x.classList.toggle("active",x===b));
-    calculate();
+
+/* ========================================
+   2% / 4% / 6% 버튼
+   ======================================== */
+
+$$(".risk-button")
+  .forEach(b=>{
+
+    b.addEventListener(
+      "click",
+      ()=>{
+
+        annualReturn=
+          Number(
+            b.dataset.return
+          );
+
+
+        $$(".risk-button")
+          .forEach(x=>{
+
+            x.classList.toggle(
+              "active",
+              x===b
+            );
+
+          });
+
+
+        /*
+          이 calculate()가 다시 실행되면서
+
+          1년
+          5년
+          10년
+          은퇴 예상금액
+
+          전부 선택한 수익률로
+          다시 계산됨
+        */
+
+        calculate();
+
+      }
+    );
+
   });
-});
 
-$("#resetBtn").addEventListener("click",()=>{
-  [
-    "income","assets","debt","housing","phone","transport","food","car","etc",
-    "peerNet","goalAsset"
-  ].forEach(id=>$("#"+id).value=0);
-  $("#age").value=0;
-  $("#payday").value=1;
-  $("#retireAge").value=45;
-  stage="starter";
-  annualReturn=4;
-  $$(".ratio-stage").forEach(x=>x.classList.toggle("active",x.dataset.stage==="starter"));
-  $$(".risk-button").forEach(x=>x.classList.toggle("active",x.dataset.return==="4"));
-  calculate();
-});
+
+/* ========================================
+   초기화
+   ======================================== */
+
+$("#resetBtn")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      [
+
+        "income",
+        "assets",
+        "debt",
+        "housing",
+        "phone",
+        "transport",
+        "food",
+        "car",
+        "etc",
+        "peerNet",
+        "goalAsset"
+
+      ].forEach(id=>{
+
+        $("#"+id).value=0;
+
+      });
+
+
+      $("#age").value=0;
+
+      $("#payday").value=1;
+
+      $("#retireAge").value=45;
+
+
+      stage="starter";
+
+      annualReturn=4;
+
+
+      $$(".ratio-stage")
+        .forEach(x=>{
+
+          x.classList.toggle(
+            "active",
+            x.dataset.stage===
+            "starter"
+          );
+
+        });
+
+
+      $$(".risk-button")
+        .forEach(x=>{
+
+          x.classList.toggle(
+            "active",
+            x.dataset.return===
+            "4"
+          );
+
+        });
+
+
+      calculate();
+
+    }
+  );
+
+
+/* ========================================
+   앱 시작
+   ======================================== */
 
 restore();
-$$(".ratio-stage").forEach(x=>x.classList.toggle("active",x.dataset.stage===stage));
-$$(".risk-button").forEach(x=>x.classList.toggle("active",Number(x.dataset.return)===annualReturn));
+
+
+$$(".ratio-stage")
+  .forEach(x=>{
+
+    x.classList.toggle(
+      "active",
+      x.dataset.stage===
+      stage
+    );
+
+  });
+
+
+$$(".risk-button")
+  .forEach(x=>{
+
+    x.classList.toggle(
+      "active",
+      Number(
+        x.dataset.return
+      )===
+      annualReturn
+    );
+
+  });
+
+
 showPage(activePage);
+
 calculate();
+
 </script>
+
 </body>
-</html>
+  </html>
