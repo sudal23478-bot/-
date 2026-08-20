@@ -521,24 +521,54 @@ button{cursor:pointer}
           <button class="ratio-stage" data-stage="over1"><strong>🚀 1억 이상</strong><small>생활 35% · 저축 10% · 투자 55%</small></button>
           <button class="ratio-stage" data-stage="over3"><strong>🔥 3억 이상</strong><small>생활 30% · 투자 65% · 여유 5%</small></button>
         </div>
+
         <div class="card" id="stageResult"></div>
 
-        <div class="section-label" style="margin-top:14px"><span class="dot">💸</span> 하루 사용 가능 금액</div>
+        <div class="section-label" style="margin-top:14px">
+          <span class="dot">💸</span>
+          하루 사용 가능 금액
+        </div>
+
         <div class="card">
-          <div class="result" style="margin-top:0">
-            <div class="result-row"><span>이번 생활비 예산</span><b id="dailyLifeBudget" class="c-yellow">0원</b></div>
-            <div class="result-row"><span>지금까지 사용</span><b id="dailyLifeSpentText">0원</b></div>
-            <div class="result-row"><span>남은 생활비</span><b id="dailyLifeRemain" class="c-green">0원</b></div>
-            <div class="result-row"><span>다음 월급일까지</span><b id="dailyDaysLeft">0일</b></div>
-            <div class="result-row"><span>하루 사용 가능액</span><b id="dailyCanSpend" class="c-blue" style="font-size:18px">0원</b></div>
+          <div class="field" style="margin-top:0">
+            <label>
+              사용할 금액
+              <small>다음 월급일까지 쓸 금액 입력</small>
+            </label>
+
+            <div class="inputbox">
+              <input
+                id="lifeSpent"
+                type="number"
+                min="0"
+                inputmode="numeric"
+                value="0"
+                placeholder="예: 80000"
+              >
+              <span class="unit">원</span>
+            </div>
           </div>
 
-          <div class="field">
-            <label>지금까지 쓴 생활비 <small>사용한 금액 누적으로 입력</small></label>
-            <div class="inputbox"><input id="lifeSpent" type="number" min="0" inputmode="numeric" value="0"><span class="unit">원</span></div>
+          <div class="result">
+            <div class="result-row">
+              <span>입력한 금액</span>
+              <b id="dailyLifeBudget" class="c-yellow">0원</b>
+            </div>
+
+            <div class="result-row">
+              <span>다음 월급일까지</span>
+              <b id="dailyDaysLeft">0일</b>
+            </div>
+
+            <div class="result-row">
+              <span>하루 사용 가능액</span>
+              <b id="dailyCanSpend" class="c-blue" style="font-size:18px">0원</b>
+            </div>
           </div>
 
-          <div class="callout blue" id="dailyBudgetMessage">월급일과 사용 금액을 기준으로 하루 예산을 계산합니다.</div>
+          <div class="callout blue" id="dailyBudgetMessage">
+            금액을 입력하면 다음 월급일까지 하루에 얼마를 쓸 수 있는지 계산합니다.
+          </div>
         </div>
 
         <div class="section-label" style="margin-top:14px"><span class="dot">⚡</span> 월급날 자동이체 루틴</div>
@@ -649,6 +679,7 @@ button{cursor:pointer}
             <div class="result-row"><span>가정 수익</span><b class="c-green" id="retireGain">0원</b></div>
             <div class="result-row"><span>은퇴 후 월 사용 가능액 <small style="font-size:8px">(30년 단순분할)</small></span><b class="c-blue" id="retireMonthly">0원</b></div>
           </div>
+
           <div class="callout blue" id="retireMessage">은퇴 진단을 계산하는 중입니다.</div>
         </div>
       </div>
@@ -692,39 +723,50 @@ function num(id){
   const el=$(id);
   return Math.max(0, Number(el?.value || 0));
 }
+
 function won(v){
   if(!Number.isFinite(v)) v=0;
   return Math.round(v).toLocaleString("ko-KR")+"원";
 }
+
 function shortWon(v){
   v=Math.round(v);
   const abs=Math.abs(v);
+
   if(abs>=100000000){
     const e=v/100000000;
     return (Math.round(e*10)/10).toLocaleString("ko-KR")+"억";
   }
+
   if(abs>=10000){
     return Math.round(v/10000).toLocaleString("ko-KR")+"만";
   }
+
   return v.toLocaleString("ko-KR")+"원";
 }
+
 function expense(){
   return num("#housing")+num("#phone")+num("#transport")+num("#food")+num("#car")+num("#etc");
 }
+
 function remaining(){
   return Math.max(0,num("#income")-expense());
 }
+
 function netAsset(){
   return num("#assets")-num("#debt");
 }
+
 function salarySplit(){
   const r=remaining();
+
   return {
     save:r*.55,
     invest:r*.30,
     emergency:r*.15
   };
 }
+
 function stageSplit(){
   const s=stagePresets[stage];
   const base=Math.round(remaining());
@@ -734,294 +776,772 @@ function stageSplit(){
   const invest=Math.round(base*s.invest/100);
   const extra=Math.round(base*s.extra/100);
 
-  // 반올림 때문에 1원 정도 차이가 날 수 있어 생활비에 보정해
-  // 생활비+저축+투자+여유의 합계가 항상 잔여소득과 정확히 같게 만듭니다.
   life += base-(life+save+invest+extra);
 
-  return {base,life,save,invest,extra};
+  return {
+    base,
+    life,
+    save,
+    invest,
+    extra
+  };
 }
-function addMonths(date, months){
+
+function addMonths(date,months){
   const d=new Date(date);
   const day=d.getDate();
+
   d.setMonth(d.getMonth()+months);
-  if(d.getDate()<day) d.setDate(0);
+
+  if(d.getDate()<day){
+    d.setDate(0);
+  }
+
   return d;
 }
+
 function fmtDate(d){
-  if(!(d instanceof Date) || isNaN(d)) return "-";
+  if(!(d instanceof Date) || isNaN(d)){
+    return "-";
+  }
+
   return `${d.getFullYear()}년 ${d.getMonth()+1}월`;
 }
+
 function persist(){
   inputIds.forEach(id=>{
     const el=$("#"+id);
-    if(el) localStorage.setItem("siho_v4_"+id,el.value);
+
+    if(el){
+      localStorage.setItem(
+        "siho_v4_"+id,
+        el.value
+      );
+    }
   });
+
   localStorage.setItem("siho_stage_v4",stage);
   localStorage.setItem("siho_return_v4",annualReturn);
   localStorage.setItem("siho_page_v4",activePage);
+
   $("#saveState").textContent="저장됨";
 }
+
 function restore(){
   inputIds.forEach(id=>{
     const v=localStorage.getItem("siho_v4_"+id);
     const el=$("#"+id);
-    if(v!==null && el) el.value=v;
+
+    if(v!==null && el){
+      el.value=v;
+    }
   });
 }
+
 function showPage(page){
   activePage=page;
-  $$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));
-  $$("#tabs button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+
+  $$(".page").forEach(p=>{
+    p.classList.toggle(
+      "active",
+      p.id==="page-"+page
+    );
+  });
+
+  $$("#tabs button").forEach(b=>{
+    b.classList.toggle(
+      "active",
+      b.dataset.page===page
+    );
+  });
+
   const active=$("#tabs button.active");
-  active?.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});
-  window.scrollTo({top:0,behavior:"smooth"});
+
+  active?.scrollIntoView({
+    behavior:"smooth",
+    inline:"center",
+    block:"nearest"
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
   persist();
 }
+
 function bar(name,p,cls){
-  return `<div class="bar">
-    <div class="bar-head"><span>${name}</span><b>${p}%</b></div>
-    <div class="bar-track"><div class="bar-fill ${cls}" style="width:${p}%"></div></div>
-  </div>`;
+  return `
+    <div class="bar">
+      <div class="bar-head">
+        <span>${name}</span>
+        <b>${p}%</b>
+      </div>
+
+      <div class="bar-track">
+        <div
+          class="bar-fill ${cls}"
+          style="width:${p}%"
+        ></div>
+      </div>
+    </div>
+  `;
 }
+
 function renderAccounts(){
   const s=salarySplit();
-  const income=num("#income"), exp=expense();
+  const income=num("#income");
+  const exp=expense();
+
   const accounts=[
     {
-      icon:"💳",name:"급여통장",sub:"월급이 들어오는 통장 · 이체 편의 중심",
+      icon:"💳",
+      name:"급여통장",
+      sub:"월급이 들어오는 통장 · 이체 편의 중심",
       desc:"월급이 들어오는 시작 통장입니다. 월급일에 목적별 통장으로 돈을 나누는 출발점으로 사용합니다.",
       amount:income,
       recs:[
-        ["주거래 입출금통장","자동이체 설정이 쉽고 이체수수료 조건이 단순한 계좌","자동이체 편의 · 수수료 확인"],
-        ["보조 입출금통장","급여 통장과 분리해 월급 흐름을 보기 쉬운 계좌","월급 흐름 분리"]
+        [
+          "주거래 입출금통장",
+          "자동이체 설정이 쉽고 이체수수료 조건이 단순한 계좌",
+          "자동이체 편의 · 수수료 확인"
+        ],
+        [
+          "보조 입출금통장",
+          "급여 통장과 분리해 월급 흐름을 보기 쉬운 계좌",
+          "월급 흐름 분리"
+        ]
       ]
     },
+
     {
-      icon:"🔒",name:"고정비통장",sub:"주거·통신·보험 등 자동이체 전용",
+      icon:"🔒",
+      name:"고정비통장",
+      sub:"주거·통신·보험 등 자동이체 전용",
       desc:"매달 거의 같은 날짜에 빠져나가는 돈만 모아둡니다. 다른 소비에 쓰지 않도록 분리하는 게 핵심입니다.",
       amount:exp,
       recs:[
-        ["고정비 전용 입출금통장","자동이체 내역을 한눈에 볼 수 있는 단순한 계좌","지출 추적이 쉬움"],
-        ["자동이체 전용 보조통장","카드를 연결하지 않고 고정비만 빠져나가게 관리","과소비 차단"]
+        [
+          "고정비 전용 입출금통장",
+          "자동이체 내역을 한눈에 볼 수 있는 단순한 계좌",
+          "지출 추적이 쉬움"
+        ],
+        [
+          "자동이체 전용 보조통장",
+          "카드를 연결하지 않고 고정비만 빠져나가게 관리",
+          "과소비 차단"
+        ]
       ]
     },
+
     {
-      icon:"🛒",name:"생활비통장",sub:"체크카드 연결 · 예산 소비용",
+      icon:"🛒",
+      name:"생활비통장",
+      sub:"체크카드 연결 · 예산 소비용",
       desc:"식비·교통·일상 소비를 여기서만 쓰는 방식입니다. 잔액이 곧 남은 생활비가 되도록 단순하게 관리합니다.",
-      amount:Math.min(income, num("#food")+num("#transport")+num("#etc")),
+      amount:Math.min(
+        income,
+        num("#food")+num("#transport")+num("#etc")
+      ),
       recs:[
-        ["생활비 전용 통장","체크카드 사용 내역과 잔액 확인이 쉬운 계좌","남은 예산 확인"],
-        ["주간 예산 통장","한 달 예산을 주 단위로 나눠 쓰는 보조 계좌","속도 조절에 유리"]
+        [
+          "생활비 전용 통장",
+          "체크카드 사용 내역과 잔액 확인이 쉬운 계좌",
+          "남은 예산 확인"
+        ],
+        [
+          "주간 예산 통장",
+          "한 달 예산을 주 단위로 나눠 쓰는 보조 계좌",
+          "속도 조절에 유리"
+        ]
       ]
     },
+
     {
-      icon:"🧯",name:"비상금통장",sub:"3~6개월치 생활 안전망 목표",
+      icon:"🧯",
+      name:"비상금통장",
+      sub:"3~6개월치 생활 안전망 목표",
       desc:"갑작스러운 지출을 위한 완충 통장입니다. 생활비와 섞지 않고 평소에는 손대지 않는 구조로 둡니다.",
       amount:s.emergency,
       recs:[
-        ["비상금 전용 통장","필요할 때 꺼낼 수 있으면서 평소엔 분리되는 계좌","생활비와 완전 분리"],
-        ["단기 안전자금 통장","즉시 사용할 수 있는 현금성 자금 보관","접근성 우선"]
+        [
+          "비상금 전용 통장",
+          "필요할 때 꺼낼 수 있으면서 평소엔 분리되는 계좌",
+          "생활비와 완전 분리"
+        ],
+        [
+          "단기 안전자금 통장",
+          "즉시 사용할 수 있는 현금성 자금 보관",
+          "접근성 우선"
+        ]
       ]
     },
+
     {
-      icon:"📈",name:"투자통장",sub:"투자금만 분리 · 생활비와 차단",
+      icon:"📈",
+      name:"투자통장",
+      sub:"투자금만 분리 · 생활비와 차단",
       desc:"이번 달 투자할 수 있는 금액을 생활비와 분리해서 관리합니다. 실제 상품 선택 전에는 기간과 위험도를 따로 확인합니다.",
       amount:s.invest,
       recs:[
-        ["투자 대기자금 통장","정해둔 투자금만 보관하는 계좌","투자 한도 관리"],
-        ["증권계좌 연결용 통장","투자 이체만 담당하는 보조 통장","생활비와 분리"]
+        [
+          "투자 대기자금 통장",
+          "정해둔 투자금만 보관하는 계좌",
+          "투자 한도 관리"
+        ],
+        [
+          "증권계좌 연결용 통장",
+          "투자 이체만 담당하는 보조 통장",
+          "생활비와 분리"
+        ]
       ]
     }
   ];
+
   $("#accounts").innerHTML=accounts.map((a,i)=>`
     <div class="account ${i===0?"open":""}">
       <div class="account-head">
         <div class="account-title">
           <span>${a.icon}</span>
-          <div><strong>${a.name}</strong><small>${a.sub}</small></div>
+
+          <div>
+            <strong>${a.name}</strong>
+            <small>${a.sub}</small>
+          </div>
         </div>
+
         <span class="chev">⌄</span>
       </div>
+
       <div class="account-body">
         ${a.desc}
+
         <div class="rec-card">
-          <strong><span>이번 달 이동액</span><span>${won(a.amount)}</span></strong>
+          <strong>
+            <span>이번 달 이동액</span>
+            <span>${won(a.amount)}</span>
+          </strong>
         </div>
-        <div style="font-size:9px;font-weight:900;margin-top:8px;color:#555">추천 구조 TOP 2</div>
+
+        <div
+          style="
+            font-size:9px;
+            font-weight:900;
+            margin-top:8px;
+            color:#555
+          "
+        >
+          추천 구조 TOP 2
+        </div>
+
         ${a.recs.map((r,idx)=>`
           <div class="rec-card">
-            <strong><span>${r[0]}</span><span class="rank">${idx+1}순위</span></strong>
+            <strong>
+              <span>${r[0]}</span>
+              <span class="rank">${idx+1}순위</span>
+            </strong>
+
             <p>${r[1]}</p>
-            <div class="why">✅ 추천 이유: ${r[2]}</div>
+
+            <div class="why">
+              ✅ 추천 이유: ${r[2]}
+            </div>
           </div>
         `).join("")}
       </div>
     </div>
   `).join("");
+
   $$(".account-head").forEach(head=>{
-    head.addEventListener("click",()=>head.parentElement.classList.toggle("open"));
+    head.addEventListener(
+      "click",
+      ()=>head.parentElement.classList.toggle("open")
+    );
   });
 }
+
 function renderStage(){
-  const p=stagePresets[stage], m=stageSplit();
+  const p=stagePresets[stage];
+  const m=stageSplit();
+
   $("#stageResult").innerHTML=`
-    <div class="section-label"><span class="dot">📊</span>${p.name} 추천 비율</div>
+    <div class="section-label">
+      <span class="dot">📊</span>
+      ${p.name} 추천 비율
+    </div>
+
     <div class="ratio-bars">
       ${bar("생활비",p.life,"life")}
       ${bar("저축",p.save,"save")}
       ${bar("투자",p.invest,"invest")}
       ${p.extra?bar("여유/자기계발",p.extra,"extra"):""}
     </div>
+
     <div class="money-split">
-      <div class="split-row"><span>고정비 제외 후 ${won(m.base)} 기준</span><b></b></div>
-      <div class="split-row"><span>생활비 ${p.life}%</span><b>${won(m.life)}</b></div>
-      <div class="split-row"><span>저축 ${p.save}%</span><b class="c-orange">${won(m.save)}</b></div>
-      <div class="split-row"><span>투자 ${p.invest}%</span><b class="c-blue">${won(m.invest)}</b></div>
-      ${p.extra?`<div class="split-row"><span>여유/자기계발 ${p.extra}%</span><b class="c-green">${won(m.extra)}</b></div>`:""}
+      <div class="split-row">
+        <span>고정비 제외 후 ${won(m.base)} 기준</span>
+        <b></b>
+      </div>
+
+      <div class="split-row">
+        <span>생활비 ${p.life}%</span>
+        <b>${won(m.life)}</b>
+      </div>
+
+      <div class="split-row">
+        <span>저축 ${p.save}%</span>
+        <b class="c-orange">${won(m.save)}</b>
+      </div>
+
+      <div class="split-row">
+        <span>투자 ${p.invest}%</span>
+        <b class="c-blue">${won(m.invest)}</b>
+      </div>
+
+      ${
+        p.extra
+        ?
+        `<div class="split-row">
+          <span>여유/자기계발 ${p.extra}%</span>
+          <b class="c-green">${won(m.extra)}</b>
+        </div>`
+        :
+        ""
+      }
     </div>
-    <div class="callout yellow">이 비율은 월급 전체가 아니라 <b>고정비를 먼저 뺀 뒤 실제로 남는 돈</b>에 적용됩니다. 그래서 고정비와 생활비·저축·투자가 월급을 초과하지 않습니다.</div>
+
+    <div class="callout yellow">
+      이 비율은 월급 전체가 아니라
+      <b>고정비를 먼저 뺀 뒤 실제로 남는 돈</b>에 적용됩니다.
+      그래서 고정비와 생활비·저축·투자가 월급을 초과하지 않습니다.
+    </div>
   `;
 }
 
 function dateForPayday(year,month,payday){
-  const lastDay=new Date(year,month+1,0).getDate();
-  return new Date(year,month,Math.min(payday,lastDay));
+  const lastDay=
+    new Date(
+      year,
+      month+1,
+      0
+    ).getDate();
+
+  return new Date(
+    year,
+    month,
+    Math.min(payday,lastDay)
+  );
 }
 
 function nextPaydayInfo(){
-  const payday=Math.max(1,Math.min(31,Math.round(num("#payday")||1)));
+  const payday=
+    Math.max(
+      1,
+      Math.min(
+        31,
+        Math.round(
+          num("#payday")||1
+        )
+      )
+    );
+
   const now=new Date();
-  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
-  let next=dateForPayday(today.getFullYear(),today.getMonth(),payday);
+
+  const today=
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+
+  let next=
+    dateForPayday(
+      today.getFullYear(),
+      today.getMonth(),
+      payday
+    );
 
   if(next<=today){
-    next=dateForPayday(today.getFullYear(),today.getMonth()+1,payday);
+    next=
+      dateForPayday(
+        today.getFullYear(),
+        today.getMonth()+1,
+        payday
+      );
   }
 
-  const days=Math.max(1,Math.ceil((next-today)/86400000));
-  return {next,days};
+  const days=
+    Math.max(
+      1,
+      Math.ceil(
+        (next-today)/86400000
+      )
+    );
+
+  return {
+    next,
+    days
+  };
 }
 
+/* 직접 입력한 금액을 다음 월급일까지 나눔 */
 function renderDailyBudget(){
-  const split=stageSplit();
-  const budget=Math.max(0,Math.round(split.life));
-  const spent=Math.max(0,Math.round(num("#lifeSpent")));
-  const remain=Math.max(0,budget-spent);
-  const pay=nextPaydayInfo();
-  const daily=pay.days>0?Math.floor(remain/pay.days):0;
+  const amount=
+    Math.max(
+      0,
+      Math.round(
+        num("#lifeSpent")
+      )
+    );
 
-  $("#dailyLifeBudget").textContent=won(budget);
-  $("#dailyLifeSpentText").textContent=won(spent);
-  $("#dailyLifeRemain").textContent=won(remain);
-  $("#dailyDaysLeft").textContent=pay.days.toLocaleString("ko-KR")+"일";
-  $("#dailyCanSpend").textContent=won(daily);
+  const pay=
+    nextPaydayInfo();
 
-  const dateText=`${pay.next.getMonth()+1}월 ${pay.next.getDate()}일`;
+  const daily=
+    pay.days>0
+    ?
+    Math.floor(
+      amount/pay.days
+    )
+    :
+    0;
 
-  if(budget<=0){
-    $("#dailyBudgetMessage").innerHTML="생활비 예산이 0원입니다. 월급과 지출 금액을 먼저 입력해 주세요.";
-  }else if(spent>budget){
-    $("#dailyBudgetMessage").innerHTML=`생활비 예산을 <b>${won(spent-budget)}</b> 초과했습니다. 다음 월급일(${dateText})까지 하루 사용 가능액은 0원입니다.`;
+  $("#dailyLifeBudget").textContent=
+    won(amount);
+
+  $("#dailyDaysLeft").textContent=
+    pay.days.toLocaleString("ko-KR")
+    +"일";
+
+  $("#dailyCanSpend").textContent=
+    won(daily);
+
+  const dateText=
+    `${pay.next.getMonth()+1}월 ${pay.next.getDate()}일`;
+
+  if(amount<=0){
+    $("#dailyBudgetMessage").innerHTML=
+      "사용할 금액을 입력하면 다음 월급일까지 하루에 얼마를 쓸 수 있는지 계산합니다.";
   }else{
-    $("#dailyBudgetMessage").innerHTML=`다음 월급일은 <b>${dateText}</b>입니다. 남은 <b>${pay.days}일</b> 동안 하루에 최대 <b>${won(daily)}</b> 정도 사용하면 현재 생활비 예산 안에서 맞출 수 있어요.`;
+    $("#dailyBudgetMessage").innerHTML=
+      `입력한 <b>${won(amount)}</b>을 `
+      +`다음 월급일인 <b>${dateText}</b>까지 `
+      +`<b>${pay.days}일</b> 동안 나누면 `
+      +`하루에 <b>${won(daily)}</b>씩 사용할 수 있어요.`;
   }
 }
 
 function renderTimeline(){
   const p=stageSplit();
-  const payday=Math.max(1,Math.min(31,Math.round(num("#payday")||1)));
+
+  const payday=
+    Math.max(
+      1,
+      Math.min(
+        31,
+        Math.round(
+          num("#payday")||1
+        )
+      )
+    );
+
   const items=[
-    [`${payday}일`,"월급 확인",num("#income"),"급여통장"],
-    [`${payday}일`,"고정비 이동",expense(),"고정비통장"],
-    [`${Math.min(payday+1,31)}일`,"저축 먼저 이동",p.save,"저축용 통장"],
-    [`${Math.min(payday+1,31)}일`,"투자금 분리",p.invest,"투자통장"],
-    [`${Math.min(payday+2,31)}일`,"생활비 한도만 남기기",p.life,"생활비통장"]
+    [
+      `${payday}일`,
+      "월급 확인",
+      num("#income"),
+      "급여통장"
+    ],
+
+    [
+      `${payday}일`,
+      "고정비 이동",
+      expense(),
+      "고정비통장"
+    ],
+
+    [
+      `${Math.min(payday+1,31)}일`,
+      "저축 먼저 이동",
+      p.save,
+      "저축용 통장"
+    ],
+
+    [
+      `${Math.min(payday+1,31)}일`,
+      "투자금 분리",
+      p.invest,
+      "투자통장"
+    ],
+
+    [
+      `${Math.min(payday+2,31)}일`,
+      "생활비 한도만 남기기",
+      p.life,
+      "생활비통장"
+    ]
   ];
-  $("#timeline").innerHTML=items.map(i=>`
-    <div class="timeline-row">
-      <strong><span>${i[0]} · ${i[1]}</span><span>${won(i[2])}</span></strong>
-      <small>${i[3]}</small>
-    </div>
-  `).join("");
+
+  $("#timeline").innerHTML=
+    items.map(i=>`
+      <div class="timeline-row">
+        <strong>
+          <span>${i[0]} · ${i[1]}</span>
+          <span>${won(i[2])}</span>
+        </strong>
+
+        <small>${i[3]}</small>
+      </div>
+    `).join("");
 }
+
 function calcGoal(){
-  const current=Math.max(0,netAsset());
-  const goal=num("#goalAsset");
-  const s=salarySplit();
-  const monthly=s.save+s.invest;
-  $("#goalCurrent").textContent=won(current);
-  $("#goalMonthly").textContent=won(monthly);
+  const current=
+    Math.max(
+      0,
+      netAsset()
+    );
+
+  const goal=
+    num("#goalAsset");
+
+  const s=
+    salarySplit();
+
+  const monthly=
+    s.save+s.invest;
+
+  $("#goalCurrent").textContent=
+    won(current);
+
+  $("#goalMonthly").textContent=
+    won(monthly);
 
   if(goal<=current){
-    $("#goalDate").textContent="이미 달성";
-    $("#goalDday").textContent="D-DAY 0";
-  }else if(monthly<=0){
-    $("#goalDate").textContent="월 저축·투자 필요";
-    $("#goalDday").textContent="-";
-  }else{
-    const months=Math.ceil((goal-current)/monthly);
-    const target=addMonths(new Date(),months);
-    const days=Math.max(0,Math.ceil((target-new Date())/86400000));
-    $("#goalDate").textContent=fmtDate(target);
-    $("#goalDday").textContent="D-"+days.toLocaleString();
+    $("#goalDate").textContent=
+      "이미 달성";
+
+    $("#goalDday").textContent=
+      "D-DAY 0";
   }
-  const pct=goal>0?Math.max(0,Math.min(100,current/goal*100)):0;
-  $("#goalProgress").style.width=pct+"%";
-  $("#goalPercent").textContent=(Math.round(pct*10)/10)+"%";
+
+  else if(monthly<=0){
+    $("#goalDate").textContent=
+      "월 저축·투자 필요";
+
+    $("#goalDday").textContent=
+      "-";
+  }
+
+  else{
+    const months=
+      Math.ceil(
+        (goal-current)/monthly
+      );
+
+    const target=
+      addMonths(
+        new Date(),
+        months
+      );
+
+    const days=
+      Math.max(
+        0,
+        Math.ceil(
+          (target-new Date())/86400000
+        )
+      );
+
+    $("#goalDate").textContent=
+      fmtDate(target);
+
+    $("#goalDday").textContent=
+      "D-"+days.toLocaleString();
+  }
+
+  const pct=
+    goal>0
+    ?
+    Math.max(
+      0,
+      Math.min(
+        100,
+        current/goal*100
+      )
+    )
+    :
+    0;
+
+  $("#goalProgress").style.width=
+    pct+"%";
+
+  $("#goalPercent").textContent=
+    (Math.round(pct*10)/10)+"%";
 }
+
 function calcRetirement(){
   const age=num("#age");
-  const target=Math.max(age,num("#retireAge"));
-  const years=Math.max(0,target-age);
-  const months=years*12;
-  const net=Math.max(0,netAsset());
-  const s=salarySplit();
-  const monthly=s.save+s.invest;
-  const mr=annualReturn/100/12;
+
+  const target=
+    Math.max(
+      age,
+      num("#retireAge")
+    );
+
+  const years=
+    Math.max(
+      0,
+      target-age
+    );
+
+  const months=
+    years*12;
+
+  const net=
+    Math.max(
+      0,
+      netAsset()
+    );
+
+  const s=
+    salarySplit();
+
+  const monthly=
+    s.save+s.invest;
+
+  const mr=
+    annualReturn/100/12;
 
   let fv=net;
+
   if(months>0){
-    fv = net*Math.pow(1+mr,months) +
-      (mr>0 ? monthly*((Math.pow(1+mr,months)-1)/mr) : monthly*months);
+    fv=
+      net*Math.pow(1+mr,months)
+      +
+      (
+        mr>0
+        ?
+        monthly*((Math.pow(1+mr,months)-1)/mr)
+        :
+        monthly*months
+      );
   }
-  const principal=net+monthly*months;
-  const gain=Math.max(0,fv-principal);
-  const monthlyUse=fv/(30*12);
 
-  $("#retireAgeText").textContent=Math.round(target)+"세";
-  $("#yearsLeft").textContent=years+"년";
-  $("#retireAsset").textContent=shortWon(fv);
-  $("#retirePrincipal").textContent=shortWon(principal);
-  $("#retireGain").textContent="+"+shortWon(gain);
-  $("#retireMonthly").textContent=won(monthlyUse);
-  $("#retireMessage").innerHTML=`📅 은퇴 시점 예상 자산은 <b>${shortWon(fv)}</b>입니다. 연 ${annualReturn}% 수익률을 단순 가정한 값이며 실제 결과와 다를 수 있어요.`;
+  const principal=
+    net+monthly*months;
+
+  const gain=
+    Math.max(
+      0,
+      fv-principal
+    );
+
+  const monthlyUse=
+    fv/(30*12);
+
+  $("#retireAgeText").textContent=
+    Math.round(target)+"세";
+
+  $("#yearsLeft").textContent=
+    years+"년";
+
+  $("#retireAsset").textContent=
+    shortWon(fv);
+
+  $("#retirePrincipal").textContent=
+    shortWon(principal);
+
+  $("#retireGain").textContent=
+    "+"+shortWon(gain);
+
+  $("#retireMonthly").textContent=
+    won(monthlyUse);
+
+  $("#retireMessage").innerHTML=
+    `📅 은퇴 시점 예상 자산은 `
+    +`<b>${shortWon(fv)}</b>입니다. `
+    +`연 ${annualReturn}% 수익률을 단순 가정한 값이며 `
+    +`실제 결과와 다를 수 있어요.`;
 }
+
 function calcPeer(){
-  const net=netAsset(), peer=num("#peerNet"), gap=net-peer;
-  $("#myNet").textContent=won(net);
-  $("#peerGap").textContent=(gap>0?"+":"")+won(gap);
-  $("#peerMessage").innerHTML = gap>=0
-    ? `지정한 비교 기준보다 <b>${won(gap)}</b> 위에 있습니다. 기준은 사용자가 직접 정한 값입니다.`
-    : `지정한 비교 기준까지 <b>${won(Math.abs(gap))}</b> 차이입니다. 월 저축률을 올리거나 목표 기간을 길게 잡아볼 수 있어요.`;
+  const net=netAsset();
+  const peer=num("#peerNet");
+  const gap=net-peer;
+
+  $("#myNet").textContent=
+    won(net);
+
+  $("#peerGap").textContent=
+    (gap>0?"+":"")+won(gap);
+
+  $("#peerMessage").innerHTML=
+    gap>=0
+    ?
+    `지정한 비교 기준보다 <b>${won(gap)}</b> 위에 있습니다. 기준은 사용자가 직접 정한 값입니다.`
+    :
+    `지정한 비교 기준까지 <b>${won(Math.abs(gap))}</b> 차이입니다. 월 저축률을 올리거나 목표 기간을 길게 잡아볼 수 있어요.`;
 }
+
 function calculate(){
-  const inc=num("#income"), e=expense(), r=remaining(), s=salarySplit(), net=netAsset();
+  const inc=num("#income");
+  const e=expense();
+  const r=remaining();
+  const s=salarySplit();
+  const net=netAsset();
 
-  $("#rIncome").textContent=won(inc);
-  $("#rExpense").textContent=won(e);
-  $("#rRemain").textContent=won(r);
-  $("#rSave").textContent=won(s.save);
-  $("#rInvest").textContent=won(s.invest);
-  $("#rEmergency").textContent=won(s.emergency);
+  $("#rIncome").textContent=
+    won(inc);
 
-  $("#startIncome").textContent=won(inc);
-  $("#startExpense").textContent=won(e);
-  $("#startRemain").textContent=won(r);
-  $("#startNet").textContent=won(net);
+  $("#rExpense").textContent=
+    won(e);
 
-  $("#investBudget").textContent=won(s.invest);
-  $("#investIncomeRate").textContent=inc?Math.round(s.invest/inc*100)+"%":"0%";
-  $("#investRemainRate").textContent=r?Math.round(s.invest/r*100)+"%":"0%";
+  $("#rRemain").textContent=
+    won(r);
+
+  $("#rSave").textContent=
+    won(s.save);
+
+  $("#rInvest").textContent=
+    won(s.invest);
+
+  $("#rEmergency").textContent=
+    won(s.emergency);
+
+  $("#startIncome").textContent=
+    won(inc);
+
+  $("#startExpense").textContent=
+    won(e);
+
+  $("#startRemain").textContent=
+    won(r);
+
+  $("#startNet").textContent=
+    won(net);
+
+  $("#investBudget").textContent=
+    won(s.invest);
+
+  $("#investIncomeRate").textContent=
+    inc
+    ?
+    Math.round(
+      s.invest/inc*100
+    )+"%"
+    :
+    "0%";
+
+  $("#investRemainRate").textContent=
+    r
+    ?
+    Math.round(
+      s.invest/r*100
+    )+"%"
+    :
+    "0%";
 
   renderAccounts();
   renderStage();
@@ -1033,52 +1553,150 @@ function calculate(){
   persist();
 }
 
-$("#tabs").addEventListener("click",(e)=>{
-  const b=e.target.closest("[data-page]");
-  if(b) showPage(b.dataset.page);
-});
-$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.jump)));
+$("#tabs").addEventListener(
+  "click",
+  (e)=>{
+    const b=
+      e.target.closest(
+        "[data-page]"
+      );
+
+    if(b){
+      showPage(
+        b.dataset.page
+      );
+    }
+  }
+);
+
+$$("[data-jump]").forEach(
+  b=>
+    b.addEventListener(
+      "click",
+      ()=>showPage(
+        b.dataset.jump
+      )
+    )
+);
 
 inputIds.forEach(id=>{
-  const el=$("#"+id);
-  if(el) el.addEventListener("input",calculate);
+  const el=
+    $("#"+id);
+
+  if(el){
+    el.addEventListener(
+      "input",
+      calculate
+    );
+  }
 });
 
 $$(".ratio-stage").forEach(b=>{
-  b.addEventListener("click",()=>{
-    stage=b.dataset.stage;
-    $$(".ratio-stage").forEach(x=>x.classList.toggle("active",x===b));
-    calculate();
-  });
+  b.addEventListener(
+    "click",
+    ()=>{
+      stage=
+        b.dataset.stage;
+
+      $$(".ratio-stage").forEach(x=>
+        x.classList.toggle(
+          "active",
+          x===b
+        )
+      );
+
+      calculate();
+    }
+  );
 });
 
 $$(".risk-button").forEach(b=>{
-  b.addEventListener("click",()=>{
-    annualReturn=Number(b.dataset.return);
-    $$(".risk-button").forEach(x=>x.classList.toggle("active",x===b));
-    calculate();
-  });
+  b.addEventListener(
+    "click",
+    ()=>{
+      annualReturn=
+        Number(
+          b.dataset.return
+        );
+
+      $$(".risk-button").forEach(x=>
+        x.classList.toggle(
+          "active",
+          x===b
+        )
+      );
+
+      calculate();
+    }
+  );
 });
 
-$("#resetBtn").addEventListener("click",()=>{
-  [
-    "income","assets","debt","housing","phone","transport","food","car","etc",
-    "lifeSpent",
-    "peerNet","goalAsset"
-  ].forEach(id=>$("#"+id).value=0);
-  $("#age").value=0;
-  $("#payday").value=1;
-  $("#retireAge").value=45;
-  stage="starter";
-  annualReturn=4;
-  $$(".ratio-stage").forEach(x=>x.classList.toggle("active",x.dataset.stage==="starter"));
-  $$(".risk-button").forEach(x=>x.classList.toggle("active",x.dataset.return==="4"));
-  calculate();
-});
+$("#resetBtn").addEventListener(
+  "click",
+  ()=>{
+    [
+      "income",
+      "assets",
+      "debt",
+      "housing",
+      "phone",
+      "transport",
+      "food",
+      "car",
+      "etc",
+      "lifeSpent",
+      "peerNet",
+      "goalAsset"
+    ].forEach(
+      id=>
+        $("#"+id).value=0
+    );
+
+    $("#age").value=0;
+    $("#payday").value=1;
+    $("#retireAge").value=45;
+
+    stage="starter";
+    annualReturn=4;
+
+    $$(".ratio-stage").forEach(
+      x=>
+        x.classList.toggle(
+          "active",
+          x.dataset.stage==="starter"
+        )
+    );
+
+    $$(".risk-button").forEach(
+      x=>
+        x.classList.toggle(
+          "active",
+          x.dataset.return==="4"
+        )
+    );
+
+    calculate();
+  }
+);
 
 restore();
-$$(".ratio-stage").forEach(x=>x.classList.toggle("active",x.dataset.stage===stage));
-$$(".risk-button").forEach(x=>x.classList.toggle("active",Number(x.dataset.return)===annualReturn));
+
+$$(".ratio-stage").forEach(
+  x=>
+    x.classList.toggle(
+      "active",
+      x.dataset.stage===stage
+    )
+);
+
+$$(".risk-button").forEach(
+  x=>
+    x.classList.toggle(
+      "active",
+      Number(x.dataset.return)===annualReturn
+    )
+);
+
 showPage(activePage);
 calculate();
 </script>
